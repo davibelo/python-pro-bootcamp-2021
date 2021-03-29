@@ -1,0 +1,50 @@
+To use cloud python IDE, go to 
+    https://replit.com/
+
+
+Setting your local environment
+    1. Install python
+        Windows:  
+            Download installer on https://www.python.org/
+            Install python to PATH
+        Linux:  
+            $ sudo apt install python3
+        OBS: Some new version already come with pre-installed python
+        To test it, use:
+            $ python3 --version
+        In linux pre-installed versions, could be necessary 
+        to install some other packages, like:            
+            $ sudo apt install python3-distutils
+            $ sudo apt install python3-pip
+    2. Install PyCharm - Community version
+        Go to https://www.jetbrains.com/pycharm/download/
+        On Ubuntu:
+            Look for it on Ubuntu Software
+            or try command to install using snap
+            $ sudo snap install pycharm-community --classic
+        PyCharm is IDE for Professional Python Developers with
+            Spell Check
+            More Space to Develop
+            built-in linter including python styling guide (PEP8)
+            use local code history (access your edited code)
+            view the structure of your code
+            refactor rename (refactor feature on right click)
+            and much more...
+    3. Create a new project
+            Choose last python interpreter
+            Choose virtual environment            
+            Create a main.py
+    4. Start to code
+        Use this features?
+            Press Shift+F10 to execute it or replace it with your code.
+            Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+            Use break points to debug your code (click next to the line number)
+            Press Ctrl+F8 to toggle the breakpoint.
+            and much more... https://www.jetbrains.com/help/pycharm/
+
+
+
+
+
+
+
