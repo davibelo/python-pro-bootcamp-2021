@@ -35,15 +35,36 @@ Setting your local environment
             Choose virtual environment            
             Create a main.py
     4. Start to code
-        Use this features?
+        Use this features:
             Press Shift+F10 to execute it or replace it with your code.
             Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
             Use break points to debug your code (click next to the line number)
             Press Ctrl+F8 to toggle the breakpoint.
             and much more... https://www.jetbrains.com/help/pycharm/
 
+PyCharm keyboard shortcuts:
+    https://www.jetbrains.com/help/pycharm/running-and-debugging-shortcuts.html?keymap=secondary_windows
 
+PyCharm TODO feature:
+    https://www.jetbrains.com/help/pycharm/using-todo.html
 
+Python formatting numbers and strings:
+    https://docs.python.org/3/library/string.html#formatspec
+    Examples: 
+        https://mkaz.blog/code/python-string-format-cookbook/
+
+To use Visual Code instead of PyCharm:
+    1. Install Python extension
+    2. Install additional python packages:
+        $ sudo apt install python3-distutils
+        $ sudo apt install python3-pip        
+    3. Install virtual environments package
+        $ sudo apt install python3-venv
+    4. Create a virtual environment on your folder
+        $ python3 -m venv .venv
+    5. Go to code command line and type:
+        > Python: Select Interpreter
+        and select your recently created environment
 
 
 
