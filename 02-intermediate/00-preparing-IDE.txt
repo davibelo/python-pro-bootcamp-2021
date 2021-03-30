@@ -79,12 +79,12 @@ To use Visual Code instead of PyCharm:
     3. Install Python and Jupyter extensions      
     4. Install virtual environments package
         $ sudo apt install python3-venv
-    5. Create a virtual environment on your project folder
+    5. Create a virtual environment on your project folder named .venv
         $ python3 -m venv .venv
     6. Go to code command line and type:
         > Python: Select Interpreter
-        and select your recently created environment .env
-    7. Remember to add .env on .gitignore
+        and select your recently created environment
+    7. Remember to add .venv on .gitignore (.venv/**)
     8. Set code formatter 
         Choose autopep8
         Don't choose black
@@ -96,12 +96,20 @@ Installing python external modules on Virtual Environment with VS Code:
     If your virtual environment is not selected
         Go to commands field on VS Code
         Use it to select Python interpreter
-        > Python: Select interpreter
+            > Python: Select interpreter
         Select your virtual environment
     Open a python terminal on VS Code
         Use command line to install python packages
         Example of install tk (Tkinter) package:
+            Installing on local venv .venv:
+                (.venv) davibelo@ubuntu: ~/...$ python3 -m pip install tk
+            or simply:
+                (.venv) davibelo@ubuntu: ~/...$ pip install tk
+            
+            Installing globally (only for packages supported by ubuntu)
             (.venv) davibelo@ubuntu: ~/...$ sudo apt-get install python3-tk
+            More about it:
+                https://askubuntu.com/questions/431780/apt-get-install-vs-pip-install
 
 Using keyboard shortcuts to run parts of the code on VS Code
     Select the lines you want to execute

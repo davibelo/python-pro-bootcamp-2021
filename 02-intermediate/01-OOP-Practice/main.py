@@ -4,8 +4,10 @@
 # import turtle
 # timmy = turtle.Turtle()  
 
-# importing only specific classes from turtle module
+# import a dependency of turtle
 import tkinter
+
+# importing only specific classes from turtle module
 from turtle import Turtle, Screen
 
 # turtle graphics documentation
@@ -18,7 +20,7 @@ print(jimmy)
 jimmy.shape("turtle")
 
 my_screen = Screen()
-# print(my_screen.canvheight)
+print(my_screen.canvheight)
 
 my_screen.exitonclick()
 
