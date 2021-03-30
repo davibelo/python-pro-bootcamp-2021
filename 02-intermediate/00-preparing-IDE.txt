@@ -125,8 +125,7 @@ Installing python packages on Virtual Environment with VS Code:
             
             (NOT RECOMMEND, but knows that is possible!!!)
             Installing globally (only for packages supported by ubuntu)
-            (.venv) davibelo@ubuntu: ~/...$ sudo apt-get install python3-tk
-            
-            More about it:
+                (.venv) davibelo@ubuntu: ~/...$ sudo apt-get install python3-tk
+                More about it:
                 https://askubuntu.com/questions/431780/apt-get-install-vs-pip-install
 
