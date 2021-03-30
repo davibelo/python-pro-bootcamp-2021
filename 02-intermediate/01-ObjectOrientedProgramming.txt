@@ -59,30 +59,6 @@ How to use OOP
             car.move()
             car.stop()
 
-Python Packages:
-    Packages are a bunch of modules packaged together that serves 
-    some kind of functionality        
 
-    Python packages could be found on an index:
-    https://pypi.org/
-
-Installing python packages on Virtual Environment with VS Code:
-    If your virtual environment is not selected
-        Go to commands field on VS Code
-        Use it to select Python interpreter
-            > Python: Select interpreter
-        Select your virtual environment
-    Open a python terminal on VS Code
-        Use command line to install python packages
-        Example of install tk (Tkinter) package:
-            Installing on local venv .venv:
-                (.venv) davibelo@ubuntu: ~/...$ python3 -m pip install tk
-            or simply:
-                (.venv) davibelo@ubuntu: ~/...$ pip install tk
-            
-            Installing globally (only for packages supported by ubuntu)
-            (.venv) davibelo@ubuntu: ~/...$ sudo apt-get install python3-tk
-            More about it:
-                https://askubuntu.com/questions/431780/apt-get-install-vs-pip-install
     
 

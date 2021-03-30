@@ -4,9 +4,6 @@
 # import turtle
 # timmy = turtle.Turtle()  
 
-# import a dependency of turtle
-import tkinter
-
 # importing only specific classes from turtle module
 from turtle import Turtle, Screen
 
