@@ -1,6 +1,14 @@
+
+IDE - Integrated Development Environment
+    It is a tool that help to write, test, debug and run code.
+
+Linter
+    lint, or a linter, is a static code analysis tool 
+    used to flag programming errors, bugs, stylistic errors, 
+    and suspicious constructs
+
 To use cloud python IDE, go to 
     https://replit.com/
-
 
 Setting your local environment
     1. Install python
