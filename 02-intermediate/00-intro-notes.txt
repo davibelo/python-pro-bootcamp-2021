@@ -60,11 +60,14 @@ To use Visual Code instead of PyCharm:
         $ sudo apt install python3-pip        
     3. Install virtual environments package
         $ sudo apt install python3-venv
-    4. Create a virtual environment on your folder
+    4. Create a virtual environment on your project folder
         $ python3 -m venv .venv
     5. Go to code command line and type:
         > Python: Select Interpreter
-        and select your recently created environment
+        and select your recently created environment .env
+    6. Remember to add .env on .gitignore
+
+
 
 
 

@@ -61,20 +61,42 @@ def enough_resources(drink):
             return True
 
 
-# def process(drink):
-#     quarters = float(input("How many quarters?"))
-#     dimes = float(input("How many dimes?"))
-#     nickels = float(input("How many nickels?"))
-#     pennies = float(input("How many pennies?"))
-#      inserted_money = quarters*0.25+dimes*0.10+nickels*0.05+pennies*0.01
-#       cost = MENU[choice]["cost"]
-#        if inserted_money < cost:
-#             print("Sorry, not enough money. Money refunded")
-#         else:
-#             money += cost
-#             change = inserted_money - cost
-#             print("Get your "+choice+" Change:" +
-#                   '{:.2f}'.format(str(change)))
+def process(drink):
+    """Process payment, drink, calculate change"""
+    quarters = float(input("How many quarters?"))
+    dimes = float(input("How many dimes?"))
+    nickels = float(input("How many nickels?"))
+    pennies = float(input("How many pennies?"))
+    inserted_money = quarters*0.25+dimes*0.10+nickels*0.05+pennies*0.01
+    cost = MENU[drink]["cost"]
+    if inserted_money < cost:
+        print("Sorry, not enough money. Money refunded: " +
+              str(('{:.2f}'.format(inserted_money))))
+    else:
+        change = inserted_money - cost
+        print("Get your "+drink+"... Change:$"+str(('{:.2f}'.format(change))))
+
+
+def price(drink):
+    """return drink price"""
+    return MENU[drink]["cost"]
+
+
+def recalculate_resources(drink):
+    """Recalculate remain resources"""
+    if drink == "espresso":
+        water_req = MENU[drink]["ingredients"]["water"]
+        coffee_req = MENU[drink]["ingredients"]["coffee"]
+        resources["water"] -= water_req
+        resources["coffee"] -= coffee_req
+    else:
+        water_req = MENU[drink]["ingredients"]["water"]
+        milk_req = MENU[drink]["ingredients"]["milk"]
+        coffee_req = MENU[drink]["ingredients"]["coffee"]
+        resources["water"] -= water_req
+        resources["milk"] -= milk_req
+        resources["coffee"] -= coffee_req
+
 
 money = 0
 status = True
@@ -90,23 +112,18 @@ while status:
     elif choice == "espresso":
         resource_test = enough_resources(choice)
         if resource_test:
-            quarters = float(input("How many quarters?"))
-            dimes = float(input("How many dimes?"))
-            nickels = float(input("How many nickels?"))
-            pennies = float(input("How many pennies?"))
-            inserted_money = quarters*0.25+dimes*0.10+nickels*0.05+pennies*0.01
-            cost = MENU[choice]["cost"]
-            if inserted_money < cost:
-                print("Sorry, not enough money. Money refunded")
-            else:
-                money += cost
-                change = inserted_money - cost
-                print("Get your "+choice+" Change:"+str(('{:.2f}'.format(change))))
+            process(choice)
+            money += price(choice)
+            recalculate_resources(choice)
     elif choice == "latte":
         resource_test = enough_resources(choice)
         if resource_test:
-            print("get your " + choice)
+            process(choice)
+            money += price(choice)
+            recalculate_resources(choice)
     elif choice == "cappuccino":
         resource_test = enough_resources(choice)
         if resource_test:
-            print("get your " + choice)
+            process(choice)
+            money += price(choice)
+            recalculate_resources(choice)
