@@ -18,7 +18,7 @@ while status:
             if cml.enough_resources(drink["ingredients"]):
                 total_inserted = cml.process_coins()
                 cml.money += cml.process_payment(choice, total_inserted)
-                cml.prepare_drink(drink["ingredients"])                
+                cml.prepare_drink(drink["ingredients"])
                 print(f"Get your {choice}...")
 
     else:

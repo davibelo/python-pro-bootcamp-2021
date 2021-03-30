@@ -32,6 +32,7 @@ resources = {
 
 money = 0
 
+
 def available_choices(menu):
     """Returns a list of available choices"""
     menu_itens = list(MENU.keys())
