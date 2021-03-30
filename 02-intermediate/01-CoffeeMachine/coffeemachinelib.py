@@ -43,6 +43,7 @@ def available_choices(menu):
 
 
 def enough_resources(order_ingredients):
+    """Check if resources are enough for the order"""
     for item in order_ingredients:
         if order_ingredients[item] > resources[item]:
             print(f"​Sorry there is not enough {item}.")
