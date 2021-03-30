@@ -48,10 +48,15 @@ How to use OOP
     In other words: 
         CLASS is a blueprint
         OBJECT is the constructed instance
-    Example in python: 
-        object   class
-        car = CarBlueprint()
+    
+    Example in python:        
+        Creating a car object from CarBlueprint class
+            car = CarBlueprint()
+        Accessing object attributes
+            car.speed 
+            car.fuel
+        Using object methods
+            car.move()
+            car.stop()
 
-
-
-Constructing objects
+        
