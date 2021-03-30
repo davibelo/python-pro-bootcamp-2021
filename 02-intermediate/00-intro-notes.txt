@@ -77,6 +77,12 @@ To use Visual Code instead of PyCharm:
         > Python: Select Interpreter
         and select your recently created environment .env
     7. Remember to add .env on .gitignore
+    8. Set code formatter 
+        Choose autopep8
+        Don't choose black
+    9. Set code linter
+        Enable pylama or flask8
+        Disable others: bandit, mypy, etc
 
 
 
