@@ -54,18 +54,29 @@ Python formatting numbers and strings:
         https://mkaz.blog/code/python-string-format-cookbook/
 
 To use Visual Code instead of PyCharm:
-    1. Install Python extension
-    2. Install additional python packages:
-        $ sudo apt install python3-distutils
-        $ sudo apt install python3-pip        
-    3. Install virtual environments package
+    1. Install python
+        Windows:  
+            Download installer on https://www.python.org/
+            Install python to PATH
+        Linux:  
+            $ sudo apt install python3
+        OBS: Some new version already come with pre-installed python
+        To test it, use:
+            $ python3 --version
+        In linux pre-installed versions, could be necessary 
+        to install some other packages, like:            
+            $ sudo apt install python3-distutils
+            $ sudo apt install python3-pip
+    2. Install Visual Code
+    3. Install Python and Jupyter extensions      
+    4. Install virtual environments package
         $ sudo apt install python3-venv
-    4. Create a virtual environment on your project folder
+    5. Create a virtual environment on your project folder
         $ python3 -m venv .venv
-    5. Go to code command line and type:
+    6. Go to code command line and type:
         > Python: Select Interpreter
         and select your recently created environment .env
-    6. Remember to add .env on .gitignore
+    7. Remember to add .env on .gitignore
 
 
 
