@@ -81,6 +81,8 @@ To use Visual Code instead of PyCharm:
         $ sudo apt install python3-venv
     5. Create a virtual environment on your project folder named .venv
         $ python3 -m venv .venv
+        OBS: To remove a virtual environment, just delete the .venv folder
+        After creating or deleting, reboot VS Code
     6. Go to code command line and type:
         > Python: Select Interpreter
         and select your recently created environment
