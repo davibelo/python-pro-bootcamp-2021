@@ -59,6 +59,36 @@ How to use OOP
             car.move()
             car.stop()
 
+Adding new attributes beyond class attributes
+    Example:
+        Imagine that class Car have only speed and fuel as attributes.
+        It is possible to set a name attribute for a car object:
+            car.name = "toyota corolla"
+        It is not common, but is possible.
 
+Style convections on python:
+    PascalCase = used in classes
+    snake_case = used in objects, variables, etc...
+    camelCase = not so used in python
+
+Constructor (__init__ method)
+    The init method is called every time a new
+    object is created from the class.    
+    The object will have the attributes passed by this function
+    Example: 
+        class Car: 
+            def __init__(self, seats):
+                self.seats = seats
+    It is possible to define a default value for a attribute
+    If the attribute is not specified on object creation, it uses that value
+    Example:
+        class Car: 
+        def __init__(self, seats = 5):
+            self.seats = seats
+    or
+        class Car: 
+        def __init__(self):
+            self.seats = 5
     
+
 
