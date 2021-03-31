@@ -1,15 +1,16 @@
 class User:
-    # method that is executes when a object of this class is created
+    # method that executes when a object of this class is created
     def __init__(self, user_id, username):
         self.id = user_id
         self.username = username
         self.followers = 0
         self.following = 0
 
+    # a method associated with the class
     def follow(self, user):
         user.followers += 1
         self.following += 1
-    
+
     # method that represents the class objects as a string
     # this is what is going to be returned if print(object) is called
     def __str__(self):
