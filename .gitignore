@@ -2,4 +2,4 @@
 .venv/**
 
 # pre-compiled code
-**__pycache__/**
+**/__pycache__/**
