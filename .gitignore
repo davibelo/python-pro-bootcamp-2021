@@ -1,2 +1,5 @@
 # virtual enviroment folders
 .venv/**
+
+# pre-compiled code
+**/__pycache__/**
