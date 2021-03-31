@@ -67,9 +67,11 @@ Adding new attributes beyond class attributes
         It is not common, but is possible.
 
 Style convections on python:
+    CAPS = used to define constant values
     PascalCase = used in classes
     snake_case = used in objects, variables, etc...
     camelCase = not so used in python
+    kebab-case = not so used in python
 
 Constructor (__init__ method)
     The init method is called every time a new
