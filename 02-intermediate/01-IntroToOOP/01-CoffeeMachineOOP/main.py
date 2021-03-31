@@ -13,7 +13,7 @@ status = True
 
 while status:
     available_itens = menu.get_items()
-    choice = input(f"What would you like? ( {available_itens})")
+    choice = input(f"What would you like? ({available_itens})")
     if choice == "off":
         status = False
     elif choice == "report":
