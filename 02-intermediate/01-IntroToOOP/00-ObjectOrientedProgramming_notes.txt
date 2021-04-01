@@ -85,5 +85,33 @@ Constructor (__init__ method)
         def __init__(self):
             self.seats = 5
     
-
+Importing external classes    
+    1. Importing classes directly
+        from <module name> import <classes names>
+            example: module machine.py, classes Car, Truck
+                To import:
+                    from machines import Car, Truck
+                To use:
+                    corolla = Car()
+                    print(corolla.speed)
+                    corolla.move()
+    2. Importing keeping module name
+        import <module name>
+            example: module machine.py, classes Car, Bicycle    
+                To import:            
+                    import machine  
+                To use:
+                    corolla = machine.Car()
+                    print(corolla.speed)
+                    corolla.move()
+    3. Importing using alias
+        import <module name> as <alias>
+            example: module machine.py, classes Car, Bicycle
+                To import:
+                    import machine as m 
+                To use:
+                    corolla = m.Car()
+                    print(corolla.speed)
+                    corolla.move()
+        
 
