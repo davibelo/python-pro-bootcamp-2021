@@ -91,7 +91,7 @@ To use Visual Code instead of PyCharm:
         Choose autopep8
         Don't choose black
     9. Set code linter
-        Enable pylama or flask8
+        Enable pylint, pylama or flask8
         Disable others: bandit, mypy, etc
 
 Using keyboard shortcuts to run parts of the code on VS Code
@@ -129,3 +129,9 @@ Installing python packages on Virtual Environment with VS Code:
                 More about it:
                 https://askubuntu.com/questions/431780/apt-get-install-vs-pip-install
 
+Style convections on python:
+    MACRO CASE = used to define constant values
+    PascalCase = used in classes
+    snake_case = used in objects, variables, etc...
+    camelCase = not so used in python
+    kebab-case = not so used in python
