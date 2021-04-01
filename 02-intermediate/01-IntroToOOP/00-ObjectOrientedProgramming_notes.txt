@@ -74,13 +74,14 @@ Constructor (__init__ method)
         class Car: 
             def __init__(self, seats):
                 self.seats = seats
-    It is possible to define a default value for a attribute
-    If the attribute is not specified on object creation, it uses that value
+    It is possible to define a default value for a attribute, so if 
+    the attribute is not specified on object creation, it uses that value
     Example:
         class Car: 
         def __init__(self, seats = 5):
             self.seats = seats
-    or
+    It is possible to assign a attribute internally, 
+    not accessible to changing on creation:
         class Car: 
         def __init__(self):
             self.seats = 5
