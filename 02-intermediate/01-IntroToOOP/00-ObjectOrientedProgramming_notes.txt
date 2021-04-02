@@ -86,7 +86,7 @@ Constructor (__init__ method)
         def __init__(self):
             self.seats = 5
     
-Importing external classes    
+Importing external modules, classes...    
     1. Importing classes directly
         from <module name> import <classes names>
             example: module machine.py, classes Car, Truck
