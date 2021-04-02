@@ -17,7 +17,7 @@ def get_N_HexCol(N=5):
 
 def draw_shape(num_sides):
     """draw a polygon"""
-    tim.color(colours[num_sides])
+    tim.color(colors[num_sides])
     for _ in range(num_sides):
         tim.right(360/num_sides)
         tim.forward(50)
@@ -26,9 +26,9 @@ def draw_shape(num_sides):
 # setting the number of polygons
 n = 20
 # creating a array of colors
-colours = get_N_HexCol(n)
+colors = get_N_HexCol(n)
 
-# setting start position
+# setting start position and properties
 tim.speed(0)
 tim.penup()
 tim.setposition(0, 300)
