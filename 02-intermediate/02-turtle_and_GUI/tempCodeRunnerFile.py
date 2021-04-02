@@ -1,1 +1,0 @@
-t.colormode(255)
