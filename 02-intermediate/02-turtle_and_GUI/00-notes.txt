@@ -1,0 +1,4 @@
+Higher Order functions 
+    These are functions that get functions as arguments
+Example: See sketchboard examplo
+
