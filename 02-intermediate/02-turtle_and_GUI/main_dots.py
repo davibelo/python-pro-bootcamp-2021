@@ -22,7 +22,7 @@ t.colormode(255)
 # setting turtle
 tim = t.Turtle()
 tim.shape("classic")
-tim.speed(10)
+tim.speed("fastest")
 tim.pensize(1)
 
 # setting screen
@@ -33,18 +33,18 @@ screen.setup(width, height)
 screen.bgcolor(first_color)
 
 # making the painting
+painting_size = 10
+dots_distance = 50
 x = -200
 y = -300
-for _ in range(10):
+for _ in range(painting_size):
     tim.penup()
     tim.goto(x, y)
-    for _ in range(10):
-        tim.pendown()
+    for _ in range(painting_size):        
         tim.color(random.choice(colors))
-        tim.dot(15)
-        tim.penup()
-        tim.forward(50)
-    y += 50    
+        tim.dot(15)        
+        tim.forward(dots_distance)
+    y += dots_distance    
 tim.hideturtle()
 
 # setting screen to exit on click
