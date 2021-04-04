@@ -1,6 +1,3 @@
-# TODO: Create a snake body
-# TODO: Move the snake
-# TODO: Controle the snake
 # TODO: Detect collision with food
 # TODO: Create a scoreboard
 # TODO: Detect collision with a wall
@@ -16,13 +13,17 @@ screen.title("My Snake Game")
 screen.tracer(0)
 
 snake = Snake()
+screen.listen()
+screen.onkey(snake.up, "Up")
+screen.onkey(snake.down, "Down")
+screen.onkey(snake.left, "Left")
+screen.onkey(snake.right, "Right")
 
 game_is_on = True
 while game_is_on:
-    screen.update()
-    time.sleep(0.5)
+    time.sleep(0.1)
+    screen.update()    
     snake.move()
-
 
 
 screen.exitonclick()
