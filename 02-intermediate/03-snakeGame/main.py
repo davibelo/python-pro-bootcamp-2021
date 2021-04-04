@@ -1,6 +1,3 @@
-
-# TODO: Create a scoreboard
-# TODO: Detect collision with a wall
 # TODO: Detect collision with itself
 
 from turtle import Screen
@@ -35,5 +32,11 @@ while game_is_on:
     if snake.head.distance(food) < 20:        
         food.refresh()
         scoreboard.increase_score()
+
+    # detect collision with a wall
+    if abs(snake.head.xcor()) > 280 or abs(snake.head.ycor()) > 280:
+        game_is_on = False
+        scoreboard.game_over()
+
 
 screen.exitonclick()
