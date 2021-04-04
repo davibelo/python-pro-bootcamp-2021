@@ -8,6 +8,7 @@ DOWN = 270
 LEFT = 180
 RIGHT = 0
 
+
 class Snake:
     """ Creates and control a snake """
 
@@ -17,16 +18,19 @@ class Snake:
         self.head = self.segments[0]
 
     def create_snake(self):
-        """create a snake with 3 segments"""
-
+        """create a snake"""
         for position in STARTING_POSITIONS:
-            new_segment = Turtle()
-            new_segment.shape("square")
-            new_segment.color("white")
-            new_segment.speed("slowest")
-            new_segment.penup()
-            new_segment.goto(position)
-            self.segments.append(new_segment)
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        """add segments to snake"""
+        new_segment = Turtle()
+        new_segment.shape("square")
+        new_segment.color("white")
+        new_segment.speed("slowest")
+        new_segment.penup()
+        new_segment.goto(position)
+        self.segments.append(new_segment)
 
     def move(self):
         """moves the snake"""
@@ -53,3 +57,6 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
+    def extend(self):        
+        self.add_segment(self.segments[-1].position())
