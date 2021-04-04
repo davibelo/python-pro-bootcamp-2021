@@ -23,7 +23,7 @@ class Snake:
             new_segment = Turtle()
             new_segment.shape("square")
             new_segment.color("white")
-            new_segment.speed(1)
+            new_segment.speed("slowest")
             new_segment.penup()
             new_segment.goto(position)
             self.segments.append(new_segment)
