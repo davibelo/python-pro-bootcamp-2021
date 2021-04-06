@@ -27,10 +27,10 @@ scoreboard = Scoreboard()
 
 # event listeners to detect key strokes
 screen.listen()
-screen.onkey(paddle_L.go_up, "w")
-screen.onkey(paddle_L.go_down, "s")
-screen.onkey(paddle_R.go_up, "Up")
-screen.onkey(paddle_R.go_down, "Down")
+screen.onkeypress(paddle_L.go_up, "w")
+screen.onkeypress(paddle_L.go_down, "s")
+screen.onkeypress(paddle_R.go_up, "Up")
+screen.onkeypress(paddle_R.go_down, "Down")
 
 game_is_on = True
 while game_is_on:
