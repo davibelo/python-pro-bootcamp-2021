@@ -13,7 +13,7 @@ class Ball(Turtle):
         self.move_speed = 0.1
 
     def reset_paddle_hit(self):
-        self.paddle_hit = False
+        self.paddle_hit = False        
 
     def move(self):
         new_x = self.xcor() + self.x_move
@@ -23,7 +23,7 @@ class Ball(Turtle):
     def bounce_y(self):
         self.y_move *= -1
 
-    def bounce_x(self):
+    def bounce_x(self):        
         if not self.paddle_hit:
             self.x_move *= -1
             self.move_speed *= 0.8
@@ -32,4 +32,4 @@ class Ball(Turtle):
     def reset_position(self):
         self.goto(0, 0)
         self.move_speed = 0.1
-        self.bounce_x()
+        self.x_move *= -1

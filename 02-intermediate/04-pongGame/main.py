@@ -19,7 +19,6 @@ screen.bgcolor("black")
 screen.title("My Pong Game")
 screen.tracer(0)
 
-
 paddle_R = Paddle((350, 0))
 paddle_L = Paddle((-350, 0))
 ball = Ball()
@@ -51,7 +50,7 @@ while game_is_on:
         ball.bounce_x()
 
     # for improving precision of bounce when hit paddles (hotfix)
-    if ball.xcor() == 0:
+    if -10 < ball.xcor() < 10 :
         ball.reset_paddle_hit()
 
     # detect when right paddle misses
