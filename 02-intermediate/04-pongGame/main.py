@@ -50,6 +50,10 @@ while game_is_on:
     if ball.distance(paddle_L) < 50 and ball.xcor() < -320:
         ball.bounce_x()
 
+    # for improving precision on bounce (hotfix)
+    if ball.xcor() == 0:
+        ball.reset_paddle_hit()
+
     # detect when right paddle misses
     if ball.xcor() > 400:
         scoreboard.increase_score_L()
