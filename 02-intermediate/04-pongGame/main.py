@@ -4,12 +4,13 @@
 # Create ball and make it move
 # Detect collision with wall and bounce
 # Detect collistion with paddle
-# TODO: Detect when paddle misses
-# TODO: Keep score
+# Detect when paddle misses
+# Keep score
 
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 screen = Screen()
@@ -22,7 +23,7 @@ screen.tracer(0)
 paddle_R = Paddle((350, 0))
 paddle_L = Paddle((-350, 0))
 ball = Ball()
-
+scoreboard = Scoreboard()
 
 # event listeners to detect key strokes
 screen.listen()
@@ -35,11 +36,11 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    ball.move()    
+    ball.move()
 
     # detect collision with wall and bounce
     if abs(ball.ycor()) > 280:
-        ball.bounce_y()      
+        ball.bounce_y()
 
     # detect collition with right paddle
     if ball.distance(paddle_R) < 50 and ball.xcor() > 320:
@@ -51,13 +52,17 @@ while game_is_on:
 
     # detect when right paddle misses
     if ball.xcor() > 400:
-        ball.reset_position()                
-    
+        scoreboard.increase_score_L()
+        ball.reset_position()
+
     # detect when left paddle misses
     if ball.xcor() < -400:
+        scoreboard.increase_score_R()
         ball.reset_position()
-        
 
-
+    # game over
+    if scoreboard.score_L > 2 or scoreboard.score_R > 2:
+        scoreboard.game_over()
+        game_is_on = False
 
 screen.exitonclick()
