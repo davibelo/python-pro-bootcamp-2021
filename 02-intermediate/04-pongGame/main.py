@@ -34,7 +34,7 @@ screen.onkeypress(paddle_R.go_down, "Down")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move()
 
@@ -50,7 +50,7 @@ while game_is_on:
     if ball.distance(paddle_L) < 50 and ball.xcor() < -320:
         ball.bounce_x()
 
-    # for improving precision on bounce (hotfix)
+    # for improving precision of bounce when hit paddles (hotfix)
     if ball.xcor() == 0:
         ball.reset_paddle_hit()
 
