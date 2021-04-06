@@ -35,8 +35,7 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    ball.move()
-    print(ball.xcor(),ball.ycor())
+    ball.move()    
 
     # detect collision with wall and bounce
     if abs(ball.ycor()) > 280:
@@ -50,6 +49,15 @@ while game_is_on:
     if ball.distance(paddle_L) < 50 and ball.xcor() < -320:
         ball.bounce_x()
 
+    # detect when right paddle misses
+    if ball.xcor() > 400:
+        ball.reset_position()                
     
+    # detect when left paddle misses
+    if ball.xcor() < -400:
+        ball.reset_position()
+        
+
+
 
 screen.exitonclick()
