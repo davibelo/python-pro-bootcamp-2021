@@ -13,7 +13,6 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.score_L = 0
         self.score_R = 0
-
         self.update_scoreboard()
 
     def update_scoreboard(self):
