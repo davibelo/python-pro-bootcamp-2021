@@ -21,10 +21,11 @@ screen.onkeypress(player.move_up,"Up")
 screen.onkeypress(player.move_down, "Down")
 
 car_manager = CarManager()
+scoreboard = Scoreboard()
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.01)
+    time.sleep(0.05)
     screen.update()
     car_manager.create_car()
     car_manager.move_cars()
@@ -33,10 +34,12 @@ while game_is_on:
     for car in car_manager.cars:
         if car.distance(player) < 20:
             game_is_on = False
+            scoreboard.game_over()        
 
     # detect turtle reaching top
     if player.is_on_top():
         player.go_to_start()
         car_manager.level_up()
+        scoreboard.level_up()
         
 screen.exitonclick()
