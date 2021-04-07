@@ -24,9 +24,19 @@ car_manager = CarManager()
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.05)
+    time.sleep(0.01)
     screen.update()
     car_manager.create_car()
     car_manager.move_cars()
 
+    # detect collision with cars
+    for car in car_manager.cars:
+        if car.distance(player) < 20:
+            game_is_on = False
+
+    # detect turtle reaching top
+    if player.is_on_top():
+        player.go_to_start()
+        car_manager.level_up()
+        
 screen.exitonclick()
