@@ -1,6 +1,6 @@
 import os
 
-# getting path
+# getting path automatically
 script_dir = os.path.dirname(__file__)
 rel_path = "04b-example.txt"
 abs_file_path = os.path.join(script_dir, rel_path)
@@ -27,3 +27,15 @@ with open(abs_file_path) as file:
 with open(abs_file_path, mode="a") as file:
     file.write("\nmy text!!!")
 
+# using the path manually
+with open("02-intermediate/04b-example.txt", mode="a") as file:
+    file.write("\nmy text!!!")
+
+# you can also use relative paths
+# file in same directory: "./<file>" or simply: "<file>"
+# file in parent directory: "../<file"
+
+# Paths Windows vs Linux
+# Linux uses forward slash: /home/project
+# Windows uses backslash: \user\documents
+# Python doesn't care, uses forward slash always !
