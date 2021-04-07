@@ -1,4 +1,5 @@
 from turtle import Turtle
+import os
 
 ALIGNMENT = "center"
 FONT = ("Courier", 18, "normal")
@@ -13,7 +14,22 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.score = 0
         self.high_score = 0
+        self.read_high_score_file()
         self.update_scoreboard()
+
+    def read_high_score_file(self):
+        script_dir = os.path.dirname(__file__)
+        rel_path = "data.txt"
+        abs_file_path = os.path.join(script_dir, rel_path)
+        with open(abs_file_path) as file:
+            self.high_score = int(file.read())
+
+    def write_high_score_file(self, high_score):
+        script_dir = os.path.dirname(__file__)
+        rel_path = "data.txt"
+        abs_file_path = os.path.join(script_dir, rel_path)
+        with open(abs_file_path, mode="w") as file:
+            file.write(str(high_score))
 
     def update_scoreboard(self):
         self.clear()
@@ -27,5 +43,6 @@ class Scoreboard(Turtle):
     def reset(self):
         if self.score > self.high_score:
             self.high_score = self.score
+        self.write_high_score_file(self.high_score)
         self.score = 0
         self.update_scoreboard()
