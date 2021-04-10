@@ -27,4 +27,8 @@ short_names = [name for name in names if len(name) < 5]
 print("e)", short_names)
 
 long_names = [name.upper() for name in names if len(name) > 5]
-print("f)", long_names)
+print("f)", long_names) 
+
+numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+odd_numbers = [n for n in numbers if n % 2 != 0]
+print("g)", odd_numbers)
