@@ -21,10 +21,12 @@ while len(guessed_states) < 50:
 
     # exit command generates a list of missed states
     if answer_state == "Exit":
-        missing_states = []
-        for state in all_states:
-            if state not in guessed_states:
-                missing_states.append(state)
+        missing_states = [
+            state for state in all_states if state not in guessed_states]
+        # missing_states = []
+        # for state in all_states:
+        #     if state not in guessed_states:
+        #         missing_states.append(state)
         df_missing_states = pd.DataFrame(missing_states)
         df_missing_states.to_csv(
             "02-intermediate/09-US-StatesGame/missing_states.csv")
