@@ -7,7 +7,7 @@ print(numbers_1)
 with open("02-intermediate/06b-file2.txt") as file1:
     file2_contents = file1.readlines()
 
-numbers_2 = [int(n.strip("\n")) for n in file2_contents]
+numbers_2 = [int(n) for n in file2_contents]
 print(numbers_2)
 
 # create a list called result which contains the numbers
