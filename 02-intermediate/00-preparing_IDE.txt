@@ -87,12 +87,14 @@ To use Visual Code instead of PyCharm:
         > Python: Select Interpreter
         and select your recently created environment
     7. Remember to add .venv on .gitignore (.venv/**)
-    8. Set code formatter 
+    8. Set code formatter on VSCode settings
         Choose autopep8
         Don't choose black
-    9. Set code linter
+    9. Set code linter on VSCode settings
         Enable pylint, pylama or flask8
         Disable others: bandit, mypy, etc
+    10. Setup language server on VSCode settings
+        Choose pylance
 
 Using keyboard shortcuts to run parts of the code on VS Code
     Select the lines you want to execute
