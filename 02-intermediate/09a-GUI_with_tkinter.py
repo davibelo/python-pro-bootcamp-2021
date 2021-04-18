@@ -3,9 +3,6 @@ from tkinter import *
 # https://en.wikipedia.org/wiki/Tk_(software)
 # https://www.tcl.tk/man/tcl8.7/contents.htm
 
-# a tkinter tutorial
-# https://tkdocs.com/tutorial/firstexample.html
-
 # Window object
 window = Tk()
 window.title("My tkinter app")
