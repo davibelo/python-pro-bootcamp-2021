@@ -2,6 +2,7 @@ from tkinter import *
 # https://docs.python.org/3/library/tkinter.html
 # https://en.wikipedia.org/wiki/Tk_(software)
 # https://www.tcl.tk/man/tcl8.7/contents.htm
+# https://tkdocs.com/index.html
 
 # Window object
 window = Tk()
