@@ -40,24 +40,26 @@ else:
     print(content)
 finally:
     file.close()
-    print("file was closed")    
+    print("file was closed")
 
 # raise
 # raise can be used to show your own exception
 
-height = float(input("Height (m): "))
-weight = int(input("Weight (kg): "))
+# height = float(input("Height (m): "))
+# weight = int(input("Weight (kg): "))
 
-if height > 3:
-    raise ValueError("human height > 3m")
+# if height > 3:
+#     raise ValueError("human height > 3m")
 
-bmi = weight / height ** 2
-print(f"BMI:{bmi}")
+# bmi = weight / height ** 2
+# print(f"BMI:{bmi}")
 
 
-# exercise
+# exercise 1
 
 fruits = ["apple", "banana", "pear"]
+
+
 def make_pie(index):
     try:
         fruit = fruits[index]
@@ -66,5 +68,29 @@ def make_pie(index):
     else:
         print(fruit + " pie")
 
+
 make_pie(0)
 make_pie(4)
+
+# exercise 2
+
+facebook_posts = [
+    {'Likes': 21, 'Comments': 2},
+    {'Likes': 13, 'Comments': 2, 'Shares': 1},
+    {'Likes': 33, 'Comments': 8, 'Shares': 3},
+    {'Comments': 4, 'Shares': 2},
+    {'Comments': 1, 'Shares': 1},
+    {'Likes': 19, 'Comments': 3}
+]
+
+total_likes = 0
+
+for post in facebook_posts:
+    try: 
+        total_likes = total_likes + post['Likes']
+    except KeyError:
+        pass
+    
+print(total_likes)
+
+

@@ -14,9 +14,18 @@ alpha_dict = {row.letter: row.code for (
 
 # 2. Create a list of the phonetic code words from a word that the user inputs.
 
-# getting a word from user
-word = input("Type a word: ").upper()
 
-# creating and printing the list
-spelling_list = [alpha_dict[letter] for letter in word]
-print(spelling_list)
+def generate_phonetic():
+    # getting a word from user
+    word = input("Type a word: ").upper()
+    # creating and printing the list
+    try:
+        spelling_list = [alpha_dict[letter] for letter in word]
+    except KeyError:
+        print("Error: Character not found NATO alphabet")
+        generate_phonetic()
+    else:
+        print(spelling_list)
+
+
+generate_phonetic()
