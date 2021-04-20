@@ -1,4 +1,6 @@
 from tkinter import *
+# messagebox isn't a class but another module
+from tkinter import messagebox
 
 # ---------------------------- PASSWORD GENERATOR ---------------------- #
 
@@ -7,9 +9,21 @@ from tkinter import *
 def save():
     website = website_entry.get()
     username = username_entry.get()
-    password = password_entry.get()    
-    with open("02-intermediate/13-passwordManager/data.txt", mode="a") as file:
-        file.write(f"\n{website} | {username} | {password}")
+    password = password_entry.get()
+
+    if len(website) == 0 or len(username) == 0 or len(password) == 0:
+        messagebox.showerror(title="Error", message="Empty field(s)")
+    else:
+        is_ok = messagebox.askokcancel(
+            title=website,
+            message=f"Website: {website} \nUsername: {username} \nPassword: {password} \nClick OK to save"
+        )
+        if is_ok:
+            with open("02-intermediate/13-passwordManager/data.txt", mode="a") as file:
+                file.write(f"{website} | {username} | {password}\n")
+            website_entry.delete(0, END)
+            username_entry.delete(0, END)
+            password_entry.delete(0, END)
 
 # ---------------------------- UI SETUP -------------------------------- #
 
@@ -44,9 +58,9 @@ password_entry.grid(row=3, column=1)
 generate_password_button = Button(
     text="Generate Password", width=14, font=("TkDefaultFont", 8, "normal"))
 generate_password_button.grid(row=3, column=2)
-add_button = Button(text="Add", width=38, font=("TkDefaultFont", 8, "normal"), command=save)
+add_button = Button(text="Add", width=38, font=(
+    "TkDefaultFont", 8, "normal"), command=save)
 add_button.grid(row=4, column=1, columnspan=2)
-
 
 # mainloop
 window.mainloop()
