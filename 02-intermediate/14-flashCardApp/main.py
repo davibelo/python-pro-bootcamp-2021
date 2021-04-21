@@ -7,9 +7,14 @@ FONT_NAME = "Courier"
 
 current_card = {}
 
-# reading data
-df = pd.read_csv("02-intermediate/14-flashCardApp/data/german_words.csv")
-word_data = df.to_dict(orient="records")
+# ----- READING WORD DATA ----- #
+
+try:
+    df = pd.read_csv("02-intermediate/14-flashCardApp/data/to_learn.csv")
+except FileNotFoundError:
+    df = pd.read_csv("02-intermediate/14-flashCardApp/data/all_words.csv")
+finally:
+    word_data = df.to_dict(orient="records")
 
 # ----- GENERATE CARD ----- #
 
@@ -26,11 +31,21 @@ def generate_card():
 
 # ----- FLIP CARD ----- #
 
-
 def flip_card():
     canvas.itemconfig(card_background, image=card_back_img)
     canvas.itemconfig(title_text, text="english", fill="white")
     canvas.itemconfig(word_text, text=current_card["english"], fill="white")
+
+# ----- IS KNOWN LOGIC ----- #
+
+
+def is_known():
+    word_data.remove(current_card)
+    df_to_learn = pd.DataFrame.from_records(word_data)
+    df_to_learn.to_csv(
+        "02-intermediate/14-flashCardApp/data/to_learn.csv",
+        index=False)
+    generate_card()
 
 
 # ----- UI SETUP ----- #
@@ -64,7 +79,7 @@ wrong_button.grid(row=1, column=0)
 right_button_img = PhotoImage(
     file="02-intermediate/14-flashCardApp/images/right.png")
 right_button = Button(image=right_button_img,
-                      highlightthickness=0, command=generate_card)
+                      highlightthickness=0, command=is_known)
 right_button.grid(row=1, column=1)
 
 generate_card()
