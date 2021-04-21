@@ -2,7 +2,8 @@ from tkinter import *
 # messagebox isn't a class but another module
 from tkinter import messagebox
 from random import randint, choice, shuffle
-import pyperclip 
+import pyperclip
+import json
 
 # ---------------------------- PASSWORD GENERATOR ---------------------- #
 
@@ -23,8 +24,8 @@ def generate_password():
     password = "".join(password_list)
     password_entry.delete(0, END)
     password_entry.insert(0, password)
-    pyperclip.copy(password)
-    
+    # pyperclip.copy(password)
+
 
 # ---------------------------- SAVE PASSWORD --------------------------- #
 
@@ -33,6 +34,12 @@ def save():
     website = website_entry.get()
     username = username_entry.get()
     password = password_entry.get()
+    new_data = {
+        website: {
+            "email": username,
+            "password": password
+        }
+    }
 
     if len(website) == 0 or len(username) == 0 or len(password) == 0:
         messagebox.showerror(title="Error", message="Empty field(s)")
@@ -42,11 +49,24 @@ def save():
             message=f"Website: {website} \nUsername: {username} \nPassword: {password} \nClick OK to save"
         )
         if is_ok:
-            with open("02-intermediate/13-passwordManager/data.txt", mode="a") as file:
-                file.write(f"{website} | {username} | {password}\n")
-            website_entry.delete(0, END)
-            username_entry.delete(0, END)
-            password_entry.delete(0, END)
+            try:
+                with open("02-intermediate/13-passwordManager/data.json", mode="r") as data_file:
+                    # reading old data
+                    data = json.load(data_file)
+            except FileNotFoundError:
+                with open("02-intermediate/13-passwordManager/data.json", mode="w") as data_file:                    
+                    # creating a data file and saving the new_data 
+                    json.dump(new_data, data_file, indent=4)
+            else:                
+                # updating data with new data
+                data.update(new_data)
+                with open("02-intermediate/13-passwordManager/data.json", mode="w") as data_file:
+                    # saving updated data
+                    json.dump(data, data_file, indent=4)
+            finally: 
+                website_entry.delete(0, END)
+                username_entry.delete(0, END)
+                password_entry.delete(0, END)
 
 # ---------------------------- UI SETUP -------------------------------- #
 

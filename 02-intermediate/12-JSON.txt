@@ -1,0 +1,15 @@
+to work with JSON files use:
+
+import json
+
+to write:
+    json.dump()
+to read:
+    json.load()
+to update
+    json.update()
+
+those methods can be used inside a "open" command call
+
+json.load automatically convert json file to python dictionaries
+
