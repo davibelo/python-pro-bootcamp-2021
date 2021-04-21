@@ -5,6 +5,8 @@ from random import randint, choice, shuffle
 import pyperclip
 import json
 
+DATA_FILE = "02-intermediate/13-passwordManager/data.json"
+
 # ---------------------------- PASSWORD GENERATOR ---------------------- #
 
 
@@ -36,7 +38,7 @@ def save():
     password = password_entry.get()
     new_data = {
         website: {
-            "email": username,
+            "username": username,
             "password": password
         }
     }
@@ -50,23 +52,41 @@ def save():
         )
         if is_ok:
             try:
-                with open("02-intermediate/13-passwordManager/data.json", mode="r") as data_file:
+                with open(DATA_FILE, mode="r") as data_file:
                     # reading old data
                     data = json.load(data_file)
             except FileNotFoundError:
-                with open("02-intermediate/13-passwordManager/data.json", mode="w") as data_file:                    
-                    # creating a data file and saving the new_data 
+                with open(DATA_FILE, mode="w") as data_file:
+                    # creating a data file and saving the new_data
                     json.dump(new_data, data_file, indent=4)
-            else:                
+            else:
                 # updating data with new data
                 data.update(new_data)
-                with open("02-intermediate/13-passwordManager/data.json", mode="w") as data_file:
+                with open(DATA_FILE, mode="w") as data_file:
                     # saving updated data
                     json.dump(data, data_file, indent=4)
-            finally: 
+            finally:
                 website_entry.delete(0, END)
                 username_entry.delete(0, END)
                 password_entry.delete(0, END)
+
+# ---------------------------- SEARCH PASSWORD ------------------------- #
+
+def search():
+    website = website_entry.get()    
+    username_entry.delete(0, END)
+    password_entry.delete(0, END)
+    with open(DATA_FILE, mode="r") as data_file:
+        data = json.load(data_file)        
+        if website in data:
+            username = data[website]["username"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"username: {username}\nPassword: {password}")
+            username_entry.insert(0, username) 
+            password_entry.insert(0, password) 
+         
+        
+
 
 # ---------------------------- UI SETUP -------------------------------- #
 
@@ -83,18 +103,22 @@ canvas.grid(row=0, column=0, columnspan=3)
 # labels
 website_label = Label(text="Website:")
 website_label.grid(row=1, column=0)
+
 username_label = Label(text="Email/Username:")
 username_label.grid(row=2, column=0)
+
 password_label = Label(text="Password:")
 password_label.grid(row=3, column=0)
 
 # entries
-website_entry = Entry(width=35)
-website_entry.grid(row=1, column=1, columnspan=2)
+website_entry = Entry(width=18)
+website_entry.grid(row=1, column=1, columnspan=1)
 website_entry.focus()
+
 username_entry = Entry(width=35)
 username_entry.grid(row=2, column=1, columnspan=2)
 username_entry.insert(0, "davibelo@gmail.com")
+
 password_entry = Entry(width=18)
 password_entry.grid(row=3, column=1)
 
@@ -106,6 +130,7 @@ generate_password_button = Button(
     command=generate_password
 )
 generate_password_button.grid(row=3, column=2)
+
 add_button = Button(
     text="Add",
     width=38,
@@ -113,6 +138,14 @@ add_button = Button(
     command=save
 )
 add_button.grid(row=4, column=1, columnspan=2)
+
+search_button = Button(
+    text="Search",
+    width=14,
+    font=("TkDefaultFont", 8, "normal"),
+    command=search
+)
+search_button.grid(row=1, column=2)
 
 # mainloop
 window.mainloop()
