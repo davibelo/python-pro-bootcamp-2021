@@ -72,25 +72,34 @@ def save():
 
 # ---------------------------- SEARCH PASSWORD ------------------------- #
 
+
 def search():
-    website = website_entry.get()    
+    website = website_entry.get()
     username_entry.delete(0, END)
     password_entry.delete(0, END)
-    with open(DATA_FILE, mode="r") as data_file:
-        data = json.load(data_file)        
+    try:
+        with open(DATA_FILE, mode="r") as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showerror(title="Error", message="No data to search")
+    else:
         if website in data:
             username = data[website]["username"]
             password = data[website]["password"]
-            messagebox.showinfo(title=website, message=f"username: {username}\nPassword: {password}")
-            username_entry.insert(0, username) 
-            password_entry.insert(0, password) 
-         
-        
+            messagebox.showinfo(
+                title=website, 
+                message=f"username: {username}\nPassword: {password}"
+                )
+            username_entry.insert(0, username)
+            password_entry.insert(0, password)
+        # here could be used an exception handling, using raise comand
+        # but it is not necessary
+        # if the situation can be solved with a simple if/else, use it!
+        else:
+            messagebox.showerror(title="Error", message="Website is not in database")
 
 
 # ---------------------------- UI SETUP -------------------------------- #
-
-
 window = Tk()
 window.title("Password Manager")
 window.config(padx=30, pady=30)
@@ -123,6 +132,14 @@ password_entry = Entry(width=18)
 password_entry.grid(row=3, column=1)
 
 # buttons
+search_button = Button(
+    text="Search",
+    width=14,
+    font=("TkDefaultFont", 8, "normal"),
+    command=search
+)
+search_button.grid(row=1, column=2)
+
 generate_password_button = Button(
     text="Generate Password",
     width=14,
@@ -138,14 +155,6 @@ add_button = Button(
     command=save
 )
 add_button.grid(row=4, column=1, columnspan=2)
-
-search_button = Button(
-    text="Search",
-    width=14,
-    font=("TkDefaultFont", 8, "normal"),
-    command=search
-)
-search_button.grid(row=1, column=2)
 
 # mainloop
 window.mainloop()
