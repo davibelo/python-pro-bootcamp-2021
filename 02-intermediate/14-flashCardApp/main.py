@@ -1,4 +1,3 @@
-from os import WEXITED
 from tkinter import *
 import pandas as pd
 import random
