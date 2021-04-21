@@ -92,7 +92,7 @@ def search():
                 )
             username_entry.insert(0, username)
             password_entry.insert(0, password)
-        # here could be used an exception handling, using raise comand
+        # below could be used an exception handling, using raise comand
         # but it is not necessary
         # if the situation can be solved with a simple if/else, use it!
         else:
