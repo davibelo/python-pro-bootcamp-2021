@@ -27,11 +27,11 @@
 
 # FileNotFoundError with exception code
 try:
-    file = open("02-intermediate/11b-a_file.txt")
+    file = open("02-intermediate/12a-a_file.txt")
     a_dict = {"key": "value"}
     print(a_dict["key"])
 except FileNotFoundError:
-    file = open("02-intermediate/11b-a_file.txt", "w")
+    file = open("02-intermediate/12a-a_file.txt", "w")
     file.write("Something")
 except KeyError as error_message:
     print(f"The key {error_message} does not exists")

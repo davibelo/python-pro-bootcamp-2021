@@ -2,7 +2,7 @@ import os
 
 # getting path automatically
 main_dir = os.path.dirname(__file__)
-rel_path = "04b-example.txt"
+rel_path = "04a-example.txt"
 abs_path = os.path.join(main_dir, rel_path)
 
 # # open a file
@@ -28,7 +28,7 @@ with open(abs_path, mode="a") as file:
     file.write("\nmy text!!!")
 
 # using the path manually
-with open("02-intermediate/04b-example.txt", mode="a") as file:
+with open("02-intermediate/04a-example.txt", mode="a") as file:
     file.write("\nmy text!!!")
 
 # you can also use relative paths
