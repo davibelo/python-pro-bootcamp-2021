@@ -6,3 +6,6 @@
 
 # temp Code Runner files
 tempCodeRunnerFile.py
+
+# enviroment files
+.env
