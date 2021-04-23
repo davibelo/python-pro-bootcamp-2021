@@ -30,7 +30,7 @@ today_tuple = (now.month, now.day)
 # looping through each person on data frame
 for (index, row) in df.iterrows():
     # checking if there is a birthday person today
-    if (row.month, row.day) == today_tuple:
+    if (row["month"], row["day"]) == today_tuple:
 
         # getting birthday person data
         name = row["name"]
