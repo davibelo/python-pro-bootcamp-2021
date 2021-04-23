@@ -14,13 +14,14 @@ import smtplib
 # constants
 PLACEHOLDER = "[NAME]"
 MY_EMAIL = "davibelo.bot@gmail.com"
+PROJECT_PATH = "02-intermediate/16-birthdayWisher"
 
 # loading email password from .env file
-load_dotenv(dotenv_path="02-intermediate/16-happyBirthdayBot/.env")
+load_dotenv(dotenv_path=f"{PROJECT_PATH}/.env")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
 # reading birthdays from csv
-df = pd.read_csv("02-intermediate/16-happyBirthdayBot/birthdays.csv")
+df = pd.read_csv(f"{PROJECT_PATH}/birthdays.csv")
 
 # getting today information
 now = dt.datetime.now()
@@ -37,7 +38,7 @@ for (index, row) in df.iterrows():
         # choosing a random letter
         letter_indexes = (1, 2, 3)
         letter_num = random.choice(letter_indexes)
-        letter_path = f"02-intermediate/16-happyBirthdayBot/letter_templates/letter_{letter_num}.txt"
+        letter_path = f"{PROJECT_PATH}/letter_templates/letter_{letter_num}.txt"
 
         # prepare letter
         with open(letter_path) as letter_file:
