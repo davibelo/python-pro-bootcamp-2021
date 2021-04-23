@@ -24,12 +24,11 @@ df = pd.read_csv("02-intermediate/16-happyBirthdayBot/birthdays.csv")
 
 # getting today information
 now = dt.datetime.now()
-month = now.month
-day = now.day
+today_tuple = (now.month, now.day)
 
 # looping through each person on data frame
 for (index, row) in df.iterrows():
-    if row.month == month and row.day == day:
+    if (row.month, row.day) == today_tuple:
 
         # getting birthday person data
         name = row["name"]
