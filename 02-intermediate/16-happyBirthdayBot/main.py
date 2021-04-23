@@ -28,13 +28,13 @@ month = now.month
 day = now.day
 
 # looping through each person on data frame
-for row in df.iterrows():
+for (index, row) in df.iterrows():
     if row.month == month and row.day == day:
-        
+
         # getting birthday person data
         name = row["name"]
         email = row["email"]
-        
+
         # choosing a random letter
         letter_indexes = (1, 2, 3)
         letter_num = random.choice(letter_indexes)
@@ -44,7 +44,7 @@ for row in df.iterrows():
         with open(letter_path) as letter_file:
             letter_contents = letter_file.read()
             letter_final = letter_contents.replace(PLACEHOLDER, name)
-        
+
         # send email with final letter
         print("sending email...")
         with smtplib.SMTP(host="smtp.gmail.com", port=587) as connection:
@@ -56,4 +56,3 @@ for row in df.iterrows():
                 msg=f"Subject:Happy Birthday!\n\n{letter_final}"
             )
         print("email sent!")
-
