@@ -1,9 +1,9 @@
 from dotenv import load_dotenv
+import pandas as pd
+import datetime as dt
 import os
 import smtplib
-import datetime as dt
 import random
-import pandas as pd
 
 # loading constants
 RELATIVE_PATH = "02-intermediate/15-motivationBot"

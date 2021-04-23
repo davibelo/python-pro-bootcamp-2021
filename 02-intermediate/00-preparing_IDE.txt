@@ -80,7 +80,7 @@ To use Visual Code instead of PyCharm:
     4. Install virtual environments package
         $ sudo apt install python3-venv
     5. Create a virtual environment on your project folder named .venv
-        $ python3 -m venv .venv
+        $ python3 -m venv .venv        
         OBS: To remove a virtual environment, just delete the .venv folder
         After creating or deleting, reboot VS Code
     6. Go to code command line and type:
@@ -113,10 +113,13 @@ Python Packages:
 
 Installing python packages on Virtual Environment with VS Code:
     If your virtual environment is not selected
-        Go to commands field on VS Code
-        Use it to select Python interpreter
-            > Python: Select interpreter
-        Select your virtual environment
+        VS CODE:
+            Go to commands field on VS Code
+            Use it to select Python interpreter
+                > Python: Select interpreter
+            Select your virtual environment
+        Terminal: 
+            >source <venv_relative_path>/bin/activate
     Open a python terminal on VS Code
         Use command line to install python packages
         Example of install tk (Tkinter) package:
