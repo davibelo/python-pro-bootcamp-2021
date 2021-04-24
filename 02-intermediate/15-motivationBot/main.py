@@ -40,4 +40,4 @@ if weekday == 4:
                 to_addrs=dest_email,
                 msg=f"Subject:Monday motivation!\n\nDear {dest_name},\n\n{quote}\n\nHave a great week!\n\nDaviBot"
             )
-        print("email sent!")
+        print(f"email sent to {dest_email}!")
