@@ -79,7 +79,7 @@ def send_email():
         )
         print(f"email sent to {DEST_EMAIL}!")
 
-    # ---- MAIN LOOP ---- #
+# ---- MAIN LOOP ---- #
 
 
 status = True
