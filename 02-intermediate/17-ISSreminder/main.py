@@ -3,6 +3,7 @@ import requests
 from dotenv import load_dotenv
 import smtplib
 import os
+import time
 
 
 # ---- CONSTANTS ---- #
@@ -75,7 +76,7 @@ def send_email():
         connection.sendmail(
             from_addr=MY_EMAIL,
             to_addrs=DEST_EMAIL,
-            msg=f"Subject:ISS AT SIGHT!\n\nDear Friend,\n\nLook Up ☝️, ISS is passing overhead\n\nRegards\n\nDaviBot"
+            msg=f"Subject:ISS ON SIGHT!\n\nLook Up, ISS is passing overhead\n\nRegards\nDaviBot"
         )
     print(f"email sent to {DEST_EMAIL}!")
 
@@ -83,8 +84,8 @@ def send_email():
 # ---- MAIN LOOP ---- #
 
 
-status = True
-while status == True:
+while True:    
+    print("checking if ISS is on sight...")
     if is_iss_overhead() and is_night():
         send_email()
-    
+    time.sleep(60)
