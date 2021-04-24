@@ -77,7 +77,8 @@ def send_email():
             to_addrs=DEST_EMAIL,
             msg=f"Subject:ISS AT SIGHT!\n\nDear Friend,\n\nLook Up ☝️, ISS is passing overhead\n\nRegards\n\nDaviBot"
         )
-        print(f"email sent to {DEST_EMAIL}!")
+    print(f"email sent to {DEST_EMAIL}!")
+
 
 # ---- MAIN LOOP ---- #
 
