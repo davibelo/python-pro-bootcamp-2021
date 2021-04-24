@@ -1,3 +1,18 @@
 You can use Python Anywhere
     https://www.pythonanywhere.com/
 
+1. Upload your project files for some folder
+2. Open a bash console
+3. Create a virtual environment and activate it
+    $ mkvirtualenv virtualenv1 --python=/usr/bin/python3.8
+4. Install all required packages for your project in your enviroment 
+    Install also virtualenvwrapper in your enviroment
+        $ pip install virtualenvwrapper
+5. Test your python project (ex: python3 main.py)
+6. Add a line in .bashrc to load virtual env automatically
+    workon virtualenv1
+7. Create a scheduled task for your python project
+    https://help.pythonanywhere.com/pages/VirtualEnvInScheduledTasks
+    Specify the command line:
+        /home/myusername/.virtualenvs/myvenv/bin/python3 /home/myusername/myproject/mytask.py
+    

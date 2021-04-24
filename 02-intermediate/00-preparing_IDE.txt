@@ -119,7 +119,7 @@ Installing python packages on Virtual Environment with VS Code:
                 > Python: Select interpreter
             Select your virtual environment
         Terminal: 
-            >source <venv_relative_path>/bin/activate
+            $ source <venv_relative_path>/bin/activate
     Open a python terminal on VS Code
         Use command line to install python packages
         Example of install tk (Tkinter) package:
