@@ -11,10 +11,12 @@ class QuizInterface:
         self.quiz = quiz_brain
         self.window = Tk()
         self.window.title("Quizzler")
-        self.window.config(padx=20, pady=20, bg=THEME_COLOR)
+        self.window.config(padx=20, pady=20,
+                           bg=THEME_COLOR)
 
         self.score_label = Label(text=" Score:0",
                                  fg="white",
+                                 font=("Ariel", 14, "italic"),
                                  bg=THEME_COLOR)
         self.score_label.grid(row=0, column=1)
 
@@ -24,7 +26,7 @@ class QuizInterface:
             150, 125,
             width=280,
             text="",
-            font=("Ariel", 20, "italic"),
+            font=("Ariel", 16, "italic"),
             fill=THEME_COLOR)
         self.canvas.grid(row=1, column=0, columnspan=2, pady=50)
 
@@ -42,9 +44,7 @@ class QuizInterface:
 
         self.get_next_question()
         self.window.mainloop()
+
     def get_next_question(self):
         q_text = self.quiz.next_question()
         self.canvas.itemconfig(self.question_text, text=q_text)
-
-
-
