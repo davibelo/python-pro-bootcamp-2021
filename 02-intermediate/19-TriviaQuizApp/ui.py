@@ -7,7 +7,7 @@ REL_PATH = "02-intermediate/19-TriviaQuizApp/"
 
 class QuizInterface:
     # "quiz_brain: QuizBrain", means that the data type is QuizBrain object
-    def __init__(self, quiz_brain: QuizBrain):
+    def __init__(self, quiz_brain: QuizBrain):        
         self.quiz = quiz_brain
         self.window = Tk()
         self.window.title("Quizzler")
@@ -33,18 +33,29 @@ class QuizInterface:
         true_img = PhotoImage(
             file=f"{REL_PATH}images/true.png")
         self.true_button = Button(
-            image=true_img, highlightthickness=0)
+            image=true_img, 
+            highlightthickness=0, 
+            command=self.true_pressed)
         self.true_button.grid(row=2, column=0)
 
         false_img = PhotoImage(
             file=f"{REL_PATH}images/false.png")
         self.false_button = Button(
-            image=false_img, highlightthickness=0)
+            image=false_img, 
+            highlightthickness=0,
+            command=self.false_pressed)
         self.false_button.grid(row=2, column=1)
 
         self.get_next_question()
+        
         self.window.mainloop()
 
     def get_next_question(self):
         q_text = self.quiz.next_question()
         self.canvas.itemconfig(self.question_text, text=q_text)
+
+    def true_pressed(self):        
+        self.quiz.check_answer("True")        
+
+    def false_pressed(self):
+        self.quiz.check_answer("False")

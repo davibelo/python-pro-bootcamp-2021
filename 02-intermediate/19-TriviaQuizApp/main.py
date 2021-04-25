@@ -15,6 +15,7 @@ for question in question_data:
 quiz = QuizBrain(question_bank)
 # creating the quiz UI passing quiz as argument (it is a QuizBrain object)
 quiz_ui = QuizInterface(quiz)
+quiz.check_answer(quiz_ui.user_answer)
 
 # while quiz.still_has_questions():
 #     quiz.next_question()
