@@ -1,3 +1,4 @@
+import json
 import os
 
 # getting path automatically
@@ -39,3 +40,11 @@ with open("02-intermediate/04a-example.txt", mode="a") as file:
 # Linux uses forward slash: /home/project
 # Windows uses backslash: \user\documents
 # Python doesn't care, uses forward slash always !
+
+# writing dict to a json file
+data = {
+    "name": "Davi Belo",
+    "age": 20
+}
+with open("02-intermediate/04b-example.json", 'w', encoding='utf-8') as file:
+    json.dump(data, file, ensure_ascii=False, indent=4)

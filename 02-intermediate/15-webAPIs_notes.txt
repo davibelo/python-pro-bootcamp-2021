@@ -9,7 +9,7 @@ API Examples:
     Joke API
         https://sv443.net/jokeapi/v2/
 
-API endpoint
+API Endpoint
     An API endpoint is a point at which an API connects with 
     the software program that is requesting the service.
     For example: An URL of a web service 
@@ -67,7 +67,7 @@ JSON
     extensions on Chrome as JSON viewer Pro 
     
 Useful application to test APIs 
-    Instead of use address bar on a browser use postman desktop app
+    Instead of use address bar on a browser use POSTMAN desktop app
 
 Web servers (and clients) works with HTTP protocol, see more at:
     https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview
