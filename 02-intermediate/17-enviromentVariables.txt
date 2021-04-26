@@ -3,15 +3,27 @@ Environment Variables
     the way running processes will behave on a computer. 
     They are part of the environment in which a process runs
 
+USING SYSTEM ENVIRONMENT VARIABLES (LINUX)
+
 To see linux environment variables type "env" on console
+
 To add environment varible on linux type:
     $ export VARIABLE=VALUE
     or edit /usr/bin/env
 
-You does not need to use system environment variables.
-Use .env files instead
+To load a environment variable on python you can use:
+    import os
+    variable = os.environ.get("VARIABLE")
 
-To use environment variables on python
+If you want to protect some information, 
+load your information manually on system environment Variables
+and after that, call it inside your code!
+
+USING .ENV FILES
+
+Instead of using system environment variables, you can use .env files:
+
+To use .env variables on python
     Install dotenv module on your project
         Install on your enviroment with "pip install python-dotenv"
     Create a .env file with variables will want to load:
@@ -28,6 +40,11 @@ To use environment variables on python
         # loading environment variables
         load_dotenv(dotenv_path=f"{REL_PATH}.env")
 
-Protect .env file on gitignore:
+Protect .env file on gitignore to don't send it to your repository:
     # environment files
     .env
+
+OTHER SITUATIONS
+
+Depending on the web site service that you will put your code to run
+it can use a different way to load system environment variables.
