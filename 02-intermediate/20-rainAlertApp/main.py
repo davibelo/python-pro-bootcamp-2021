@@ -19,6 +19,8 @@ api_endpoint = "https://api.openweathermap.org/data/2.5/onecall"
 
 response = requests.get(url=api_endpoint, params=parameters)
 data = response.json()
+
+# writing to a json file to help visualize data
 with open(f"{REL_PATH}weather.json", mode="w", encoding="utf-8") as file:
     json.dump(data, file, ensure_ascii=False, indent=4)
     
