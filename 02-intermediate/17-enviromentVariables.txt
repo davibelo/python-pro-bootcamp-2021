@@ -1,0 +1,27 @@
+Environment Variables
+    An environment variable is a dynamic-named value that can affect 
+    the way running processes will behave on a computer. 
+    They are part of the environment in which a process runs
+
+To see environment variables type "env" on console
+
+To use environment variables on python
+    Use dotenv module 
+        Install on your enviroment with "pip install python-dotenv"
+    Create a .env file with variables will want to load:
+        VARIABLE1 = "string"
+        VARIABLE2 = 10
+    Call enviroment variables inside your main.py
+        # importing required modules
+        from dotenv import load_dotenv
+        import os
+        
+        # getting actual directory and making a rel path
+        REL_PATH = f"{os.path.dirname(__file__)}/"
+
+        # loading environment variables
+        load_dotenv(dotenv_path=f"{REL_PATH}.env")
+
+Protect .env file on gitignore:
+    # environment files
+    .env
