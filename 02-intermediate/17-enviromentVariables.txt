@@ -3,15 +3,21 @@ Environment Variables
     the way running processes will behave on a computer. 
     They are part of the environment in which a process runs
 
-To see environment variables type "env" on console
+To see linux environment variables type "env" on console
+To add environment varible on linux type:
+    $ export VARIABLE=VALUE
+    or edit /usr/bin/env
+
+You does not need to use system environment variables.
+Use .env files instead
 
 To use environment variables on python
-    Use dotenv module 
+    Install dotenv module on your project
         Install on your enviroment with "pip install python-dotenv"
     Create a .env file with variables will want to load:
         VARIABLE1 = "string"
         VARIABLE2 = 10
-    Call enviroment variables inside your main.py
+    Call .env variables inside your main.py:
         # importing required modules
         from dotenv import load_dotenv
         import os
