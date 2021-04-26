@@ -46,5 +46,5 @@ Protect .env file on gitignore to don't send it to your repository:
 
 OTHER SITUATIONS
 
-Depending on the web site service that you will put your code to run
+Depending on the web site service that you will put your code to,
 it can use a different way to load system environment variables.
