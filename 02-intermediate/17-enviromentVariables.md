@@ -34,6 +34,7 @@ To use .env variables on python
         VARIABLE1 = "string"
         VARIABLE2 = 10
     Call .env variables inside your main.py:
+        
         # importing required modules
         from dotenv import load_dotenv
         import os
