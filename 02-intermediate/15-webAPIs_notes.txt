@@ -95,7 +95,8 @@ API Keys
     Normally, you register on web app provider
     and get an option to generate API Keys
 
-
+How to find APIs?
+    Use https://apilist.fun/
 
 
 
