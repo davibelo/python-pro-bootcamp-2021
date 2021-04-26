@@ -87,3 +87,20 @@ https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
     Client errors (400–499)
     Server errors (500–599)    
 
+Authentication on Web APIs
+    Necessary for majority of Web APIs
+    For this, Web APIs uses API Keys
+
+API Keys
+    Normally, you register on web app provider
+    and get an option to generate API Keys
+
+
+
+
+
+    
+    
+
+
+

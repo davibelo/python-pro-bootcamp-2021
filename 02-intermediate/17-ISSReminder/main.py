@@ -12,9 +12,9 @@ import time
 MY_LAT = -8.0584933
 MY_LNG = -34.8848193
 
-RELATIVE_PATH = "02-intermediate/17-ISSreminder"
+REL_PATH = "02-intermediate/17-ISSreminder/"
 MY_EMAIL = "davibelo.bot@gmail.com"
-load_dotenv(dotenv_path=f"{RELATIVE_PATH}/.env")
+load_dotenv(dotenv_path=f"{REL_PATH}.env")
 MY_EMAIL_PASSWORD = os.getenv("MY_EMAIL_PASSWORD")
 DEST_EMAIL = "davibelo@gmail.com"
 
