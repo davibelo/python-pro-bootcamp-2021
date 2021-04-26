@@ -8,32 +8,40 @@ They are part of the environment in which a process runs
 To see linux environment variables type "env" on console
 
 To add environment varible on linux type:
+    
     $ export VARIABLE=VALUE
-    or edit /usr/bin/env
 
-To load a environment variable on python you can use:
+or edit /usr/bin/env, adding your variables
+
+To load a environment variable on python file, you can use:
+    
     import os
     variable = os.environ.get("VARIABLE")
 
 If you want to protect some information using environment variables:
-    1. load your information manually on system environment Variables
-    and after that, call it inside your code.
-    or
-    2. load your information automatically
-        add export command lines on scheduled tasks with variables information:
-            ex: export KEY="asdfasdf"; python3 main.py
+
+1. load your information manually on system environment Variables
+    and after that, call it inside your code, or
+    
+2. load your information automatically adding export command lines on 
+    scheduled tasks with variables information:
+    
+    example: export KEY="asdfasdf"; python3 main.py
 
 ## USING .ENV FILES
 
 Instead of using system environment variables, you can use .env files:
 
-To use .env variables on python
-    Install dotenv module on your project
-        Install on your environment with "pip install python-dotenv"
-    Create a .env file with variables will want to load:
+To use .env variables on python:
+1. Install dotenv module on your project:
+        
+        (venv1)$ pip install python-dotenv
+
+2. Create a .env file with variables will want to load:
+
         VARIABLE1 = "string"
         VARIABLE2 = 10
-    Call .env variables inside your main.py:
+3. Call .env variables inside your main.py:
         
         # importing required modules
         from dotenv import load_dotenv
@@ -45,9 +53,10 @@ To use .env variables on python
         # loading environment variables
         load_dotenv(dotenv_path=f"{REL_PATH}.env")
 
-Protect .env file on gitignore to don't send it to your repository:
-    # environment files
-    .env
+4. Protect .env file on gitignore to don't send it to your repository:
+
+        # environment files
+        .env
 
 ## OTHER SITUATIONS
 
