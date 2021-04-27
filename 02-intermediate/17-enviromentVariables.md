@@ -7,12 +7,14 @@ They are part of the environment in which a process runs
 ## USING SYSTEM ENVIRONMENT VARIABLES (LINUX)
 
 To see linux environment variables type on console:
+
         $ env
 
 To add environment varible on linux type on console:
+
         $ export VARIABLE=VALUE
 
-or edit /usr/bin/env, adding your variables
+> or edit /usr/bin/env, adding your variables
 
 To load a environment variable on python file, you can use:      
 
@@ -29,6 +31,7 @@ If you want to protect some information using environment variables:
     scheduled tasks with variables information:
     
     example: 
+
         export KEY="your key here"; python3 main.py
 
 ## USING .ENV FILES
@@ -59,8 +62,7 @@ To use .env variables on python:
         load_dotenv(dotenv_path=f"{REL_PATH}.env")
 
 
-4. Protect .env file on gitignore to don't send it to your repository:
-        
+4. Protect .env file on gitignore to don't send it to your repository:        
 
         # environment files
         .env
