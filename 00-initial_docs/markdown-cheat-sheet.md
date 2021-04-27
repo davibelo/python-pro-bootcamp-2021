@@ -24,6 +24,20 @@ These are the elements outlined in John Gruber’s original design document. All
 
 *italicized text*
 
+### Code inside paragraph
+
+Your code here: `code`
+
+### Code block
+
+Your code below:
+      
+    {
+      "firstName": "John",
+      "lastName": "Smith",
+      "age": 25
+    }
+
 ### Blockquote
 
 > blockquote
@@ -39,10 +53,6 @@ These are the elements outlined in John Gruber’s original design document. All
 - First item
 - Second item
 - Third item
-
-### Code
-
-`code`
 
 ### Horizontal Rule
 
@@ -67,15 +77,16 @@ These elements extend the basic syntax by adding additional features. Not all Ma
 | Header | Title |
 | Paragraph | Text |
 
+
 ### Fenced Code Block
 
-```
+~~~
 {
   "firstName": "John",
   "lastName": "Smith",
   "age": 25
 }
-```
+~~~
 
 ### Footnote
 
