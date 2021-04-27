@@ -115,15 +115,21 @@ IDE for Professional Python Developers with:
     - Enable pylint, pylama or flask8 (one at time)
     - Disable others: bandit, mypy, etc
 
-10. Setup language server on VSCode settings
-    - Choose pylance
+10. Install language server extensions:
+    - Pylance
+    - Visual Studio IntelliCode
 
-> Using keyboard shortcuts to run parts of the code on VS Code
+11. Setup language server on VSCode settings    
+    - Choose pylance
+    > OBS: Language server provide Completions, Definitions, Hover, References, Signature Help, and Symbols
+
+
+> ### Using keyboard shortcuts to run parts of the code on VS Code
 > - Select the lines you want to execute
 > - Press Shift+Enter
 > - It will open a python terminal and run the selected code
-> - You can continue to select other lines and run them
->> Remember: If you want to restart the kernel, press Crtl+Z
+> - You can continue to select other lines and run them  
+> Remember: If you want to restart the kernel, press Crtl+Z
 
 # Python Packages:
 Packages are a bunch of modules packaged together that serves some kind of functionality        
