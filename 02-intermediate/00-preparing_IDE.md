@@ -1,11 +1,6 @@
 # IDE - Integrated Development Environment
 It is a tool that help to write, test, debug and run code.
 
-# Linter
-lint, or a linter, is a static code analysis tool 
-used to flag programming errors, bugs, stylistic errors, 
-and suspicious constructs
-
 # Python Cloud IDE: 
 https://replit.com/
 
@@ -114,6 +109,8 @@ IDE for Professional Python Developers with:
 9. Set code linter on VSCode settings
     - Enable pylint, pylama or flask8 (one at time)
     - Disable others: bandit, mypy, etc
+
+    > Linter, is a static code analysis tool used to flag programming errors, bugs, stylistic errors, and suspicious constructs.
 
 10. Install language server extensions:
     - Pylance
