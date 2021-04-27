@@ -28,15 +28,10 @@ with open(abs_path) as file:
 with open(abs_path, mode="a") as file:
     file.write("\nmy text!!!")
 
-# writing dict to a json file
-data = {
-    "name": "Davi Belo",
-    "age": 20
-}
-with open("02-intermediate/04b-example.json", 'w', encoding='utf-8') as file:
-    json.dump(data, file, ensure_ascii=False, indent=4)
+# JSON
+# for details about how to work with JSON files go to 13-JSON_notes.md!
 
-
+# About Paths!
 # using the path manually
 with open("02-intermediate/04a-example.txt", mode="a") as file:
     file.write("\nmy text!!!")
