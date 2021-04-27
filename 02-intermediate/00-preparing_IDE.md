@@ -63,6 +63,8 @@ IDE for Professional Python Developers with:
 > PyCharm TODO feature:  
 > https://www.jetbrains.com/help/pycharm/using-todo.html
 
+# Visual Studio Code
+
 ## Setting your local environment (Visual Studio Code)
 1. Install python:
     - Windows:  
