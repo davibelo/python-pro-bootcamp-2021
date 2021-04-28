@@ -1,7 +1,6 @@
 from dotenv import load_dotenv
 import os
 import requests
-import datetime as dt
 from twilio.rest import Client
 
 # stock config
@@ -16,35 +15,32 @@ REL_PATH = f"{os.path.dirname(__file__)}/"
 load_dotenv(dotenv_path=f"{REL_PATH}.env")
 
 # stocks prices API config
-ALPHAVANTAGE_KEY = os.getenv("ALPHAVANTAGE_KEY")
-ALPHAVANTAGE_ENDPOINT = "https://www.alphavantage.co/query"
+STOCKS_KEY = os.getenv("STOCKS_KEY")
+STOCKS_ENDPOINT = "https://www.alphavantage.co/query"
 
-ALPHAVANTAGE_PARAMS = {
-    "function": "TIME_SERIES_DAILY_ADJUSTED",
+STOCKS_PARAMS = {
+    "function": "TIME_SERIES_DAILY",
     "symbol": STOCK,
     "outputsize": "compact",
     "datatype": "json",
-    "apikey": ALPHAVANTAGE_KEY
+    "apikey": STOCKS_KEY
 }
 
-# getting yesterday time data to use on stocks API
-today = dt.datetime.utcnow().date() + dt.timedelta(hours=+4)
-yesterday = str(today - dt.timedelta(days=1))
-before_yesterday = str(today - dt.timedelta(days=2))
-
 # accessing stocks API and getting data
-response = requests.get(url=ALPHAVANTAGE_ENDPOINT, params=ALPHAVANTAGE_PARAMS)
+response = requests.get(url=STOCKS_ENDPOINT, params=STOCKS_PARAMS)
 response.raise_for_status()
 data = response.json()["Time Series (Daily)"]
-value_1 = float(data[before_yesterday]["4. close"])
-value_2 = float(data[yesterday]["4. close"])
+data_list = [value for (key, value) in data.items()]
+
+value_1 = float(data_list[0]["4. close"])
+value_2 = float(data_list[1]["4. close"])
 
 # calculating diference of stock price in percent
-dif_percent = abs(100*(value_2-value_1)/(value_1))
-
+dif_percent = 100*abs((value_2-value_1)/(value_1))
 print(dif_percent)
+
 if dif_percent > 5:
-    pass
+    print("get news")
 
 
 
