@@ -4,6 +4,7 @@ import requests
 import datetime as dt
 from twilio.rest import Client
 
+# stock config
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 ALERT_LIM = 5
@@ -14,6 +15,7 @@ REL_PATH = f"{os.path.dirname(__file__)}/"
 # loading environment variables
 load_dotenv(dotenv_path=f"{REL_PATH}.env")
 
+# stocks prices API config
 ALPHAVANTAGE_KEY = os.getenv("ALPHAVANTAGE_KEY")
 ALPHAVANTAGE_ENDPOINT = "https://www.alphavantage.co/query"
 
@@ -25,16 +27,22 @@ ALPHAVANTAGE_PARAMS = {
     "apikey": ALPHAVANTAGE_KEY
 }
 
+# getting yesterday time data to use on stocks API
 today = dt.datetime.utcnow().date() + dt.timedelta(hours=+4)
 yesterday = str(today - dt.timedelta(days=1))
+before_yesterday = str(today - dt.timedelta(days=2))
 
+# accessing stocks API and getting data
 response = requests.get(url=ALPHAVANTAGE_ENDPOINT, params=ALPHAVANTAGE_PARAMS)
 response.raise_for_status()
-data = response.json()["Time Series (Daily)"][yesterday]
-open_value = float(data["1. open"])
-close_value = float(data["4. close"])
-dif_percent = abs(100*(close_value-open_value)/(open_value))
+data = response.json()["Time Series (Daily)"]
+value_1 = float(data[before_yesterday]["4. close"])
+value_2 = float(data[yesterday]["4. close"])
 
+# calculating diference of stock price in percent
+dif_percent = abs(100*(value_2-value_1)/(value_1))
+
+print(dif_percent)
 if dif_percent > 5:
     pass
 
