@@ -1,4 +1,5 @@
 # Procedural Oriented Programming
+
 A program in a procedural language is a list of instructions 
 where each statement tells the computer to do something. 
 
@@ -9,6 +10,7 @@ Example: Fortran, Cobol...
 > An analogy: One man restaurant. One man that do all the work alone step by step.
 
 # Object Oriented Programming
+
 Is a programming paradigm based on the concept of "objects", 
 which can contain data and code: data in the form of fields 
 (often known as attributes or properties), and code, in the form 
@@ -22,6 +24,7 @@ business with a specialized staff that executes specific functions on
 restaurant as waiter to get orders, chef to cook, cleaner to clean.
 
 ## Attributes and methods
+
 OOP concept tries to model the reality.
 
 An object HAS attributes and DOES something (methods)
@@ -71,6 +74,7 @@ Example in python:
         car.stop()
 
 ## Constructor Method (__init__ method)
+
 The init method is called every time a new object is created from the class.  
 
 The object will have the attributes passed by this function
