@@ -6,7 +6,10 @@ from twilio.rest import Client
 # stock config
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
-ALERT_LIM = 5
+ALERT_LIM = 1
+
+# sms config
+DEST_NUMBER = "+5581997847711"
 
 # getting actual directory and making a rel path
 REL_PATH = f"{os.path.dirname(__file__)}/"
@@ -29,21 +32,49 @@ STOCKS_PARAMS = {
 # accessing stocks API and getting data
 response = requests.get(url=STOCKS_ENDPOINT, params=STOCKS_PARAMS)
 response.raise_for_status()
-data = response.json()["Time Series (Daily)"]
-data_list = [value for (key, value) in data.items()]
+stock_data = response.json()["Time Series (Daily)"]
+data_list = [value for (key, value) in stock_data.items()]
 
 value_1 = float(data_list[0]["4. close"])
 value_2 = float(data_list[1]["4. close"])
 
 # calculating diference of stock price in percent
 dif_percent = 100*abs((value_2-value_1)/(value_1))
-print(dif_percent)
 
-if dif_percent > 5:
-    print("get news")
+if dif_percent > ALERT_LIM:
+    NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
+    NEWS_KEY = os.getenv("NEWS_KEY")
+    NEWS_PARAMS = {
+        "qInTitle": COMPANY_NAME,
+        "apiKey": NEWS_KEY
+    }
+    response = requests.get(url=NEWS_ENDPOINT, params=NEWS_PARAMS)
+    response.raise_for_status()
+    news_data = response.json()["articles"][:3]
+
+    formatted_articles = [f"Headline: {article['title']}\nBrief: {article['description']}" for article in news_data]
+    print(formatted_articles)
+
+    # SMS API information
+    account_sid = os.environ['TWILIO_ACCOUNT_SID']
+    auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    client = Client(account_sid, auth_token)
+
+    for article in formatted_articles:
+        print("sending SMS...")    
+        message = client.messages.create(
+            body=article,
+            from_="+13025664228",
+            to=DEST_NUMBER
+        )
+        print(f"message sid: {message.sid}")
+
+   
 
 
 
+# print(news_data["title"])
+# print(news_data["description"])
 
 # STEP 1: Use https://www.alphavantage.co
 # When STOCK price increase/decreases by 5% between yesterday
