@@ -99,6 +99,49 @@ How to find APIs?
     Use https://apilist.fun/
 
 
+API REST
+
+REST
+    Representation State Transfer
+
+How web generally works:
+         http request
+Client   ----------> Server <------------------> database
+(client)   (order)  (restaurant waiter)         (storage)
+
+         http response
+Client   <---------- Server
+(client)   (meal)  (restaurant waiter)
+
+Where is the API?
+API is the "Menu"
+Client <--> API <--->Server
+(client)   (order)  (restaurant waiter)
+
+What is REST?
+REST é one architecture style of APIs
+
+Main Rules of REST:
+    1. Use HTTP Request Verbs
+    2. Use specific pattern of routes/endpoint URLs
+
+1. HTTP Verbs
+    GET, POST, PUT, PATCH, DELETE
+    OBS: Remember databases CRUD (Create, Read, Update, Delete)
+
+    GET = Read
+    POST = Create
+    PUT, PATCH = Update
+        PUT = Updating the entire entry
+        PATCH = Update part of entry
+    DELETE = Delete
+
+2. Specific pattern routes (RESTful Routing)
+    Example:
+    /articles
+        all requests will apply to all articles
+    /articles/jack-bauer
+        all requests will apply only for this article
 
     
     
