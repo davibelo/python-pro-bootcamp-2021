@@ -25,13 +25,13 @@ headers = {
     "Content-Type": "application/json",
 }
 
-body = {
-    "query": input("Type the exercise"),
+data = {
+    "query": "10km cycling",
     "gender": GENDER,
     "weight_kg": WEIGHT_KG,
     "height_cm": HEIGHT_CM,
     "age": AGE,
 }
 
-response = requests.post(url=EXERCISE_ENDPOINT, body=body, headers=headers)
-print(response)
+response = requests.post(url=EXERCISE_ENDPOINT, json=data, headers=headers)
+print(response.text)
