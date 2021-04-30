@@ -101,10 +101,12 @@ IDE for Professional Python Developers with:
 7. Remember to add .venv on .gitignore (.venv/**) project file
 
 8. Set code formatter on VSCode settings
-    - Choose autopep8 or black (see observation below)
+    - Choose autopep8, yapf or black (see observation below)
     > black formatter does not give you possibilites, it apply always the same rules.  
     > for example: autopep8 permits you to choose how to break lines and corrects indentation  
     > black will revert your break lines and make everything its way
+    > yapf acts similar to black, but the style is better than black and it has
+    > options to personalize it
 
 9. Set code linter on VSCode settings
     - Enable pylint, pylama or flask8 (one at time)

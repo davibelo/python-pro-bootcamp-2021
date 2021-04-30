@@ -14,13 +14,10 @@ USERNAME = "davibelo"
 TOKEN = os.getenv("TOKEN")
 GRAPH_ID = "graph1"
 
-headers = {
-    "X-USER-TOKEN": TOKEN
-}
+headers = {"X-USER-TOKEN": TOKEN}
 
 today = dt.datetime.now()
 # today = dt.datetime(year=2021, month=4, day=30)
-
 
 # # registering...
 # user_params = {
@@ -51,14 +48,16 @@ pixel_creation_endpoint = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs/{GRAPH_ID}"
 # creating a new pixel
 pixel_data = {
     "date": today.strftime("%Y%m%d"),
-    "quantity": input("How many km did you run today?")
+    "quantity": input("How many km did you run today?"),
 }
-response = requests.post(url=pixel_creation_endpoint, json=pixel_data, headers=headers)
+response = requests.post(url=pixel_creation_endpoint,
+                         json=pixel_data,
+                         headers=headers)
 print(response.text)
 
 # # updating a pixel:
 # update_endpoint = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
-# new_pixel_data = {    
+# new_pixel_data = {
 #     "quantity": "20"
 # }
 # response = requests.put(url=update_endpoint,
