@@ -16,10 +16,10 @@ IDE for Professional Python Developers with:
 
 ## Setting your local environment (PyCharm)
 1. Install python
-    - Windows:  
+    - Windows:<br>
         Download installer on https://www.python.org/  
         > Select option "Install python to PATH"
-    - Linux:  
+    - Linux:<br>
             
             $ sudo apt install python3
     OBS: Some new version already come with pre-installed python
@@ -62,14 +62,14 @@ IDE for Professional Python Developers with:
 
 ## Setting your local environment (Visual Studio Code)
 1. Install python:
-    - Windows:  
+    - Windows:<br>
         - Download installer on https://www.python.org/
         - Install python to PATH
     - Linux:
      
             $ sudo apt install python3
         
-        > OBS: Some new version already come with pre-installed python
+        > OBS: Some new version already come with pre-installed python.<br>
         > To test it, use:
 
             $ python3 --version
@@ -90,7 +90,7 @@ IDE for Professional Python Developers with:
     
         $ python3 -m venv .venv        
     
-    > OBS: To remove a virtual environment, just delete the .venv folder.  
+    > OBS: To remove a virtual environment, just delete the .venv folder  
     > After creating or deleting, reboot VS Code
 
 6. Go to code command line (Ctrl+Shift+P) and type:  
@@ -101,12 +101,11 @@ IDE for Professional Python Developers with:
 7. Remember to add .venv on .gitignore (.venv/**) project file
 
 8. Set code formatter on VSCode settings
-    - Choose autopep8, yapf or black (see observation below)
-    > black formatter does not give you possibilites, it apply always the same rules.  
-    > for example: autopep8 permits you to choose how to break lines and corrects indentation  
-    > black will revert your break lines and make everything its way
-    > yapf acts similar to black, but the style is better than black and it has
-    > options to personalize it
+    - Choose yapf, autopep8 or black (see observation below)
+    > autopep8 is the more flexible formatter<br>
+    > black formatter does not give you possibilites, it apply always the same rules and rules are fixed.<br>
+    > for example: autopep8 permits you to choose how to break lines and corrects indentation, black will revert your break lines and make everything its way<br>
+    > yapf acts similar to black, but the style is better than black and it has options to personalize it
 
 9. Set code linter on VSCode settings
     - Enable pylint, pylama or flask8 (one at time)
@@ -156,10 +155,10 @@ Packages are a bunch of modules packaged together that serves some kind of funct
     
             (.venv) davibelo@ubuntu: ~/...$ pip install tk
     
-    > (NOT RECOMMEND, but that is possible...)  
-    > Installing globally (only for packages supported by ubuntu)  
-    > `(.venv) davibelo@ubuntu: ~/...$ sudo apt-get install python3-tk`  
-    > More about it:  
+    > (NOT RECOMMEND, but that is possible...)<br>
+    > Installing globally (only for packages supported by ubuntu)<br>
+    > `(.venv) davibelo@ubuntu: ~/...$ sudo apt-get install python3-tk`<br>
+    > More about it:<br>
     > https://askubuntu.com/questions/431780/apt-get-install-vs-pip-install
 
 # Style convections on python:
