@@ -20,5 +20,5 @@ class DataManager:
         pass
     def get_sheet_data(self):
         response = requests.get(url=API_ENDPOINT, headers=API_HEADERS)
-        return response.text
+        return response.json()["prices"]
     
