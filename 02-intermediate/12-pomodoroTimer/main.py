@@ -62,7 +62,7 @@ def count_down(count):
     if count > 0:
         # window.after method works as a timer
         global timer
-        timer = window.after(1000, count_down, count - 240)
+        timer = window.after(1000, count_down, count - 1)
     else:
         # count = 0
         start_timer()
