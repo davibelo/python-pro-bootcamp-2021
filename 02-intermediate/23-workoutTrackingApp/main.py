@@ -24,7 +24,7 @@ NUTRITIONIX_HEADERS = {
     "Content-Type": "application/json",
 }
 exercise_data = {
-    "query": "30min run",
+    "query": "2 hour cycling",
     # "query": input("Type the exercise: "),
     "gender": GENDER,
     "weight_kg": WEIGHT_KG,
@@ -38,12 +38,10 @@ exercise_response = response.json()["exercises"][0]
 exercise_name = exercise_response["name"]
 exercise_duration = exercise_response["duration_min"]
 exercise_calories = exercise_response["nf_calories"]
-print(response.json()["exercises"][0]["duration_min"])
-
 
 today = dt.datetime.now()
-today_date = f"{today.day}/{today.month}/{today.year}"
-today_time = f"{today.hour}:{today.minute}"
+today_date = today.strftime("%d/%m/%Y")
+today_time = today.strftime("%X")
 
 # sheet write API
 SHEETY_API_ENDPOINT = "https://api.sheety.co/3955488f8ee023601d308d21b9639dd3/myWorkouts/home"
@@ -58,9 +56,10 @@ sheet_data = {
         "time": today_time,
         "exercise": exercise_name,
         "duration": exercise_duration,
-        "calories": exercise_calories
+        "calories": exercise_calories,
     }
 }
 response = requests.post(url=SHEETY_API_ENDPOINT,
                          headers=SHEETY_HEADERS,
                          json=sheet_data)
+print(response.text)
