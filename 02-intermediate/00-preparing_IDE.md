@@ -113,13 +113,19 @@ IDE for Professional Python Developers with:
 
     > Linter, is a static code analysis tool used to flag programming errors, bugs, stylistic errors, and suspicious constructs.
 
-10. Install language server extensions:
-    - Pylance
-    - Visual Studio IntelliCode
 
-11. Setup language server on VSCode settings    
-    - Choose pylance
-    > OBS: Language server provide Completions, Definitions, Hover, References, Signature Help, and Symbols
+
+10. Setup language server on VSCode settings    
+
+    - Choose jedi 
+    > I tested in 2021-05, and only jedi have autocomplete for classes in local modules
+    
+
+    - or choose pylance, in this case, install language server extensions:
+        - Pylance
+        - Visual Studio IntelliCode    
+    
+    > Language server provide Completions, Definitions, Hover, References, Signature Help, and Symbols
 
 
 > ### Using keyboard shortcuts to run parts of the code on VS Code
