@@ -62,4 +62,3 @@ sheet_data = {
 response = requests.post(url=SHEETY_API_ENDPOINT,
                          headers=SHEETY_HEADERS,
                          json=sheet_data)
-print(response.text)
