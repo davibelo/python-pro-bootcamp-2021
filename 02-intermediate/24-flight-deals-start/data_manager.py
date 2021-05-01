@@ -20,5 +20,10 @@ class DataManager:
         pass
     def get_sheet_data(self):
         response = requests.get(url=API_ENDPOINT, headers=API_HEADERS)
+        response.raise_for_status()
         return response.json()["prices"]
-    
+    def update_data(self, item_id, item_info):        
+        json_body = {"price":{"iataCode":item_info}}
+        print(json_body)
+        response = requests.put(url=f"{API_ENDPOINT}/{item_id}", headers=API_HEADERS, json=json_body)
+        response.raise_for_status()        

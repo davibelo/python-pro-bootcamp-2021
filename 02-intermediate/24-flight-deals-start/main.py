@@ -19,4 +19,8 @@ iata_codes = [data["iataCode"] for data in sheet_data]
 if "" in iata_codes:
     # getting missing iata codes
     for data in sheet_data:
-        flight_search.get_iata_code(city_name=data["city"])
+        iata_code = flight_search.get_iata_code(city_name=data["city"])
+        data["iataCode"] = iata_code
+
+for data in sheet_data:    
+    data_manager.update_data(item_id=data["id"],item_info=data["iataCode"])
