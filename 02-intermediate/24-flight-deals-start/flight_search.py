@@ -49,9 +49,9 @@ class FlightSearch:
                                 params=api_params)
         result = response.json()["data"][0]
         return {
-            "depature_city": result["cityFrom"],
+            "departure_city": result["cityFrom"],
             "departure_airport_code": result["flyFrom"],
-            "arrival_city_name": result["cityTo"],
+            "arrival_city": result["cityTo"],
             "arrival_airport_code": result["flyTo"],
             "departure_date": result["local_departure"].split("T")[0],
             "arrival_date": result["local_arrival"].split("T")[0],

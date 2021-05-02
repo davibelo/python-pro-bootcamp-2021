@@ -5,10 +5,12 @@
 from data_manager import DataManager
 from flight_search import FlightSearch
 from flight_data import FlightData
+from notification_manager import NotificationManager
 
 # creating objects
 data_manager = DataManager()
 flight_search = FlightSearch()
+notification_manager = NotificationManager()
 
 # getting sheet data
 print("getting sheet data...")
@@ -36,5 +38,9 @@ for data in sheet_data:
             price_limit=data["lowestPrice"])
     except IndexError:
         print(f"no flights deals found for destination {data['city']}")
-    else:
-        print(result)
+    else:        
+        alert = f"Alert! Flight from {result['departure_city']}:{result['departure_airport_code']} \
+            to {result['arrival_city']}:{result['arrival_airport_code']} \
+                from {result['departure_date']} to {result['arrival_date']} \
+                    , price:{result['price']}"
+        notification_manager.send_SMS(text=alert)
