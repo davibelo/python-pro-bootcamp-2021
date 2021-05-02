@@ -29,8 +29,6 @@ if "" in [data["iataCode"] for data in sheet_data]:
 else:
     print("iata codes ok")
 
-# print(sheet_data)
-
 for data in sheet_data:
     try:
         result = flight_search.get_flight_prices(
