@@ -4,6 +4,7 @@
 
 from data_manager import DataManager
 from flight_search import FlightSearch
+from flight_data import FlightData
 
 # creating objects
 data_manager = DataManager()
@@ -28,6 +29,14 @@ if "" in [data["iataCode"] for data in sheet_data]:
 else:
     print("iata codes ok")
 
-print(sheet_data)
+# print(sheet_data)
 
-
+for data in sheet_data:
+    try:
+        result = flight_search.get_flight_prices(
+            destiny_airport_code=data["iataCode"],
+            price_limit=data["lowestPrice"])
+    except IndexError:
+        print(f"no flights deals found for destination {data['city']}")
+    else:
+        print(result)
