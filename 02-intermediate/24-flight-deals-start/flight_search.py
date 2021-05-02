@@ -10,14 +10,12 @@ REL_PATH = f"{os.path.dirname(__file__)}/"
 load_dotenv(dotenv_path=f"{REL_PATH}.env")
 
 # https://tequila.kiwi.com/portal/docs/tequila_api/search_api
-API_ENDPOINT = "https://tequila-api.kiwi.com"
-API_KEY = os.getenv("TEQUILA_KIWI_APIKEY")
-API_HEADERS = {"apikey": API_KEY}
-
 
 class FlightSearch:
     def __init__(self):
-        pass
+        self.api_endpoint = "https://tequila-api.kiwi.com"
+        self.api_key = os.getenv("TEQUILA_KIWI_APIKEY")
+        self.api_headers = {"apikey": self.api_key}
 
     def get_iata_code(self, city_name):
         api_params = {
@@ -25,8 +23,8 @@ class FlightSearch:
             "location_types": "city",
             "locale": "pt-BR"
         }
-        response = requests.get(url=f"{API_ENDPOINT}/locations/query",
-                                headers=API_HEADERS,
+        response = requests.get(url=f"{self.api_endpoint}/locations/query",
+                                headers=self.api_headers,
                                 params=api_params)
 
         response.raise_for_status()
@@ -46,8 +44,8 @@ class FlightSearch:
             "price_to": price_limit,
             "curr": flight_data.curr
         }
-        response = requests.get(url=f"{API_ENDPOINT}/v2/search",
-                                headers=API_HEADERS,
+        response = requests.get(url=f"{self.api_endpoint}/v2/search",
+                                headers=self.api_headers,
                                 params=api_params)
         result = response.json()["data"][0]
         return {
