@@ -60,7 +60,23 @@ for data in sheet_data:
             price_limit=data["lowestPrice"],
             currency=CURRENCY)
     except IndexError:
-        print(f"no flights deals found for destination {data['city']}")
+        try:
+            result = flight_search.get_flight_prices(
+                departure_code=DEP_AIRPORT_CODE,
+                arrival_code=data["iataCode"],
+                max_stops=MAX_STOP_OVER+1,
+                date_initial=date_initial,
+                date_final=date_final,
+                nights_min=NIGHTS_MIN,
+                nights_max=NIGHTS_MAX,
+                language=LANGUAGE,
+                price_limit=data["lowestPrice"],
+                currency=CURRENCY)
+        except IndexError:
+            print(f"no flights deals found for destination {data['city']}")
+        else:
+            alert = f"Alert! Flight from {result.departure_city} ({result.departure_airport_code}) to {result.arrival_city} ({result.arrival_airport_code}) from {result.departure_date} to {result.arrival_date}, stop overs: {result.stop_overs}, via: {result.via_city}, price: {CURRENCY} {result.price}"
+            notification_manager.send_SMS(text=alert)
     else:
-        alert = f"Alert! Flight from {result.departure_city} ({result.departure_airport_code}) to {result.arrival_city} ({result.arrival_airport_code}) from {result.departure_date} to {result.arrival_date}, price: {CURRENCY} {result.price}"
+        alert = f"Alert! Flight from {result.departure_city} ({result.departure_airport_code}) to {result.arrival_city} ({result.arrival_airport_code}) from {result.departure_date} to {result.arrival_date}, stop overs: {result.stop_overs}, price: {CURRENCY} {result.price}"
         notification_manager.send_SMS(text=alert)

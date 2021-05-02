@@ -57,5 +57,8 @@ class FlightSearch:
             arrival_airport_code=result["flyTo"],
             departure_date=result["local_departure"].split("T")[0],
             arrival_date=result["local_arrival"].split("T")[0],
+            stop_overs=api_params["max_stopovers"],
+            via_city=result["route"][0]["flyTo"],
             price=result["price"])
+        print(result)
         return flight_data
