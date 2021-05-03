@@ -48,6 +48,7 @@ else:
 
 for data in sheet_data:
     try:
+        print("searching direct flights...")
         result = flight_search.get_flight_prices(
             departure_code=DEP_AIRPORT_CODE,
             arrival_code=data["iataCode"],
@@ -61,6 +62,7 @@ for data in sheet_data:
             currency=CURRENCY)
     except IndexError:
         try:
+            print("searching with stopover...")
             result = flight_search.get_flight_prices(
                 departure_code=DEP_AIRPORT_CODE,
                 arrival_code=data["iataCode"],
@@ -75,8 +77,10 @@ for data in sheet_data:
         except IndexError:
             print(f"no flights deals found for destination {data['city']}")
         else:
-            alert = f"Alert! Flight from {result.departure_city} ({result.departure_airport_code}) to {result.arrival_city} ({result.arrival_airport_code}) from {result.departure_date} to {result.arrival_date}, stop overs: {result.stop_overs}, via: {result.via_city}, price: {CURRENCY} {result.price}"
+            alert_email = f"Flight from {result.departure_city} ({result.departure_airport_code}) to {result.arrival_city} ({result.arrival_airport_code}) from {result.departure_date} to {result.arrival_date}, stop overs: {result.stop_overs}, via: {result.via_city}, price: {CURRENCY} {result.price}"
             notification_manager.send_SMS(text=alert)
-    else:
-        alert = f"Alert! Flight from {result.departure_city} ({result.departure_airport_code}) to {result.arrival_city} ({result.arrival_airport_code}) from {result.departure_date} to {result.arrival_date}, stop overs: {result.stop_overs}, price: {CURRENCY} {result.price}"
+            notification_manager.send_emails(text=alert)
+    else:        
+        alert = f"Flight from {result.departure_city} ({result.departure_airport_code}) to {result.arrival_city} ({result.arrival_airport_code}) from {result.departure_date} to {result.arrival_date}, stop overs: {result.stop_overs}, via: {result.via_city}, price: {CURRENCY} {result.price}"
         notification_manager.send_SMS(text=alert)
+        notification_manager.send_emails(text=alert)
