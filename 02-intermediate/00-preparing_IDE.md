@@ -132,6 +132,18 @@ IDE for Professional Python Developers with:
     
     > Language server provide Completions, Definitions, Hover, References, Signature Help, and Symbols
 
+11. Setup jupyter notebooks with virtual enviroments
+
+    - after creating and activating a venv (as described above), do:
+        - Install ipykernel package:
+
+                pip install ipykernel
+
+        - Install a new kernel:
+
+                ipython kernel install --user --name=.venv
+
+
 
 > ### Using keyboard shortcuts to run parts of the code on VS Code
 > - Select the lines you want to execute
