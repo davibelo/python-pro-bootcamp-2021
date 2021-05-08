@@ -143,6 +143,8 @@ IDE for Professional Python Developers with:
 
                 ipython kernel install --user --name=.venv
 
+        > Remember to restart the Visual Studio Code and select the new kernel on jupyter notebook
+
 
 
 > ### Using keyboard shortcuts to run parts of the code on VS Code
