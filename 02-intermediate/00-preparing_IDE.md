@@ -93,10 +93,15 @@ IDE for Professional Python Developers with:
     > OBS: To remove a virtual environment, just delete the .venv folder  
     > After creating or deleting, reboot VS Code
 
-6. Go to code command line (Ctrl+Shift+P) and type:  
+6. Activate virtual enviroment:
+    - Go to code command line (Ctrl+Shift+P) and type:  
 
         Python: Select Interpreter  
-    > and select your recently created environment
+        > and select your recently created environment
+
+    - or open a terminal and type:
+
+            source .venv/bin/activate
 
 7. Remember to add .venv on .gitignore (.venv/**) project file
 
