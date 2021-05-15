@@ -132,13 +132,22 @@ Packages are a bunch of modules packaged together that serves some kind of funct
     > More about it:<br>
     > https://askubuntu.com/questions/431780/apt-get-install-vs-pip-install
 
+# Creating a dependencies requirements file:
+
+1. Use the command below to create a requirements.txt file that contains all modules installed in your environment
+
+        $ pip freeze > requirements.txt
+
+2. Use the command below to install all modules listed inside requirements file:
+
+        $ pip install -r requirements.txt
+
 # Style convections on python:
 - MACRO CASE = used to define constant values
 - PascalCase = used in classes
 - snake_case = used in objects, variables, etc...
 - camelCase = not so used in python
 - kebab-case = not so used in python
-
 
 # PyCharm 
 IDE for Professional Python Developers with:
@@ -193,3 +202,4 @@ IDE for Professional Python Developers with:
 
 > PyCharm TODO feature:  
 > https://www.jetbrains.com/help/pycharm/using-todo.html
+
