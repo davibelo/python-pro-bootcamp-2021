@@ -3,11 +3,13 @@ from bs4 import BeautifulSoup
 WEB_PAGE = "https://www.empireonline.com/movies/features/best-movies-2/"
 WEB_FILE = "02-intermediate/25-WebScraping/100_best_movies.html"
 
-# because this web page uses javascript to render the page dinamically
-# and the html is not in the source code, it is
-# necessary to download the page and make the scrapping after
+# because this web page uses javascript to render the page dinamically,
+# the html is not in the source code, it is
+# it is necessary to download the page and make the scrapping after it
+
 # use javascript on webpage console to copy html generated to clipboard: 
 # copy(document.querySelector('html').outerHTML)
+# and save a html file
 
 
 def read_web_file():
