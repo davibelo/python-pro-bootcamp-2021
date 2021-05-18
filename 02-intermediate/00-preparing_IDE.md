@@ -4,60 +4,6 @@ It is a tool that help to write, test, debug and run code.
 # Python Cloud IDE: 
 https://replit.com/
 
-# PyCharm 
-IDE for Professional Python Developers with:
-- Spell Check
-- More Space to Develop
-- built-in linter including python styling guide (PEP8)
-- use local code history (access your edited code)
-- view the structure of your code
-- refactor rename (refactor feature on right click)
-- and much more...
-
-## Setting your local environment (PyCharm)
-1. Install python
-    - Windows:<br>
-        Download installer on https://www.python.org/  
-        > Select option "Install python to PATH"
-    - Linux:<br>
-            
-            $ sudo apt install python3
-    OBS: Some new version already come with pre-installed python
-    To test it, use:
-
-        $ python3 --version
-        
-    In linux pre-installed versions, could be necessary 
-    to install some other packages, like:            
-
-        $ sudo apt install python3-distutils
-        $ sudo apt install python3-pip
-
-2. Install PyCharm - Community version  
-    - Download at https://www.jetbrains.com/pycharm/download/  
-    - Or install with Snap Store (Ubuntu):      
-    Look for it on Ubuntu Software or use command to install:
-        
-            $ sudo snap install pycharm-community --classic
-    
-3. Create a new project:  
-    - Choose last python interpreter
-    - Choose virtual environment            
-    - Create a main.py
-
-4. Start to code, using PyCharm features:    
-    - Press Shift+F10 to execute it or replace it with your code.
-    - Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-    - Use break points to debug your code (click next to the line number)
-    - Press Ctrl+F8 to toggle the breakpoint.
-    and much more... https://www.jetbrains.com/help/pycharm/
-
-> PyCharm keyboard shortcuts:  
-> https://www.jetbrains.com/help/pycharm/running-and-debugging-shortcuts.html?keymap=secondary_windows
-
-> PyCharm TODO feature:  
-> https://www.jetbrains.com/help/pycharm/using-todo.html
-
 # Visual Studio Code
 
 ## Setting your local environment (Visual Studio Code)
@@ -93,7 +39,7 @@ IDE for Professional Python Developers with:
     > OBS: To remove a virtual environment, just delete the .venv folder  
     > After creating or deleting, reboot VS Code
 
-6. Activate virtual enviroment:
+6. Activate virtual environment:
     - Go to code command line (Ctrl+Shift+P) and type:  
 
         Python: Select Interpreter  
@@ -186,9 +132,74 @@ Packages are a bunch of modules packaged together that serves some kind of funct
     > More about it:<br>
     > https://askubuntu.com/questions/431780/apt-get-install-vs-pip-install
 
+# Creating a dependencies requirements file:
+
+1. Use the command below to create a requirements.txt file that contains all modules installed in your environment
+
+        $ pip freeze > requirements.txt
+
+2. Use the command below to install all modules listed inside requirements file:
+
+        $ pip install -r requirements.txt
+
 # Style convections on python:
 - MACRO CASE = used to define constant values
 - PascalCase = used in classes
 - snake_case = used in objects, variables, etc...
 - camelCase = not so used in python
 - kebab-case = not so used in python
+
+# PyCharm 
+IDE for Professional Python Developers with:
+- Spell Check
+- More Space to Develop
+- built-in linter including python styling guide (PEP8)
+- use local code history (access your edited code)
+- view the structure of your code
+- refactor rename (refactor feature on right click)
+- and much more...
+
+## Setting your local environment (PyCharm)
+1. Install python
+    - Windows:<br>
+        Download installer on https://www.python.org/  
+        > Select option "Install python to PATH"
+    - Linux:<br>
+            
+            $ sudo apt install python3
+    OBS: Some new version already come with pre-installed python
+    To test it, use:
+
+        $ python3 --version
+        
+    In linux pre-installed versions, could be necessary 
+    to install some other packages, like:            
+
+        $ sudo apt install python3-distutils
+        $ sudo apt install python3-pip
+
+2. Install PyCharm - Community version  
+    - Download at https://www.jetbrains.com/pycharm/download/  
+    - Or install with Snap Store (Ubuntu):      
+    Look for it on Ubuntu Software or use command to install:
+        
+            $ sudo snap install pycharm-community --classic
+    
+3. Create a new project:  
+    - Choose last python interpreter
+    - Choose virtual environment            
+    - Create a main.py
+
+4. Start to code, using PyCharm features:    
+    - Press Shift+F10 to execute it or replace it with your code.
+    - Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    - Use break points to debug your code (click next to the line number)
+    - Press Ctrl+F8 to toggle the breakpoint.
+    and much more... https://www.jetbrains.com/help/pycharm/
+
+> PyCharm keyboard shortcuts:  
+> https://www.jetbrains.com/help/pycharm/running-and-debugging-shortcuts.html?keymap=secondary_windows
+
+> PyCharm TODO feature:  
+> https://www.jetbrains.com/help/pycharm/using-todo.html
+
