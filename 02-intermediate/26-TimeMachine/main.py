@@ -5,12 +5,14 @@ import os
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
+PLAYLIST_SIZE = 30
+DATE = "2012-12-09"
+
 # --- SCRAPING BILLBOARD WEBSITE --- #
 
-# date = input("Type the date you want to come back (YYYY-MM-DD):")
-date = "2010-12-09"
+print("getting song names...")
 
-BILLBOARD_URL = f"https://www.billboard.com/charts/hot-100/{date}"
+BILLBOARD_URL = f"https://www.billboard.com/charts/hot-100/{DATE}"
 
 response = requests.get(BILLBOARD_URL)
 webpage = response.text
@@ -19,8 +21,6 @@ soup = BeautifulSoup(webpage, "html.parser")
 
 songs_tags = soup.find_all(name="span",
                            class_="chart-element__information__song")
-
-PLAYLIST_SIZE = 30
 
 song_names = [song.getText() for song in songs_tags[:PLAYLIST_SIZE]]
 print(song_names)
@@ -42,15 +42,28 @@ sp = spotipy.Spotify(
                               client_secret=SPOTIFY_CLIENT_SECRET,
                               redirect_uri=REDIRECT_URI,
                               scope="playlist-modify-private"))
-user_id = sp.current_user()["id"]
 
+# querying musics
+print("looking for musics...")
 song_URIs = []
 for song in song_names:
-    results = sp.search(q=f"track:{song} year:{date[:4]}", limit=1, type="track")
+    results = sp.search(q=f"track:{song} year:{DATE[:4]}",
+                        limit=1,
+                        type="track")
     try:
         song_URIs.append(results["tracks"]["items"][0]["uri"])
     except IndexError:
         continue
 
-print(song_URIs)
+# print(song_URIs)
+
+# creating a playlist
+print("creating a playlist...")
+user_id = sp.current_user()["id"]
+playlist = sp.user_playlist_create(user=user_id,
+                                       name=f"Billboard {DATE}",
+                                       public=False,
+                                       collaborative=False)
+playlist_id = playlist["id"]
+sp.playlist_add_items(playlist_id=playlist_id, items=song_URIs, position=None)
 
