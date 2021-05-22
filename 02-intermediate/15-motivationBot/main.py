@@ -6,9 +6,9 @@ import smtplib
 import random
 
 # loading constants
-RELATIVE_PATH = "02-intermediate/15-motivationBot"
-MY_EMAIL = "davibelo.bot@gmail.com"
-load_dotenv(dotenv_path=f"{RELATIVE_PATH}/.env")
+REL_PATH = "02-intermediate/15-motivationBot"
+load_dotenv(dotenv_path=f"{REL_PATH}/.env")
+MY_EMAIL = os.getenv("MY_EMAIL")
 MY_EMAIL_PASSWORD = os.getenv("MY_EMAIL_PASSWORD")
 
 # getting today data
