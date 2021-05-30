@@ -3,14 +3,17 @@ from time import time
 
 chrome_driver_path = "/home/davibelo/chromedriver"
 driver = webdriver.Chrome(executable_path=chrome_driver_path)
-
 driver.get("http://orteil.dashnet.org/experiments/cookie/")
 
-#Get cookie to click on.
+TOTAL_GAME_TIME = 60*5
+BUY_TIME = 5
+
+# get cookie to click on.
 cookie = driver.find_element_by_id("cookie")
 
-game_timeout = time() + 60 * 5
-buy_item_timeout = time() + 5
+# setting times
+game_timeout = time() + TOTAL_GAME_TIME
+buy_item_timeout = time() + BUY_TIME
 
 # --- Getting Upgrades --- #
 
