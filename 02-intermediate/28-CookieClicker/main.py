@@ -1,5 +1,5 @@
 from selenium import webdriver
-from time import time, sleep
+from time import time
 
 chrome_driver_path = "/home/davibelo/chromedriver"
 driver = webdriver.Chrome(executable_path=chrome_driver_path)
