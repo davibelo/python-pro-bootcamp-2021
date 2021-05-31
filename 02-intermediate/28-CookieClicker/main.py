@@ -56,12 +56,11 @@ while continue_game == True:
         money = get_money()
         print(money)
 
-        affordable_upgrades = [
-            key for (key, value) in upgrades.items() if value < money
-        ]
-        print(affordable_upgrades)
-
         try:
+            affordable_upgrades = [
+                key for (key, value) in upgrades.items() if value < money
+            ]
+            print(affordable_upgrades)      
             most_expensive_upgrade_id = affordable_upgrades[-1]
             print(most_expensive_upgrade_id)
         except IndexError:
