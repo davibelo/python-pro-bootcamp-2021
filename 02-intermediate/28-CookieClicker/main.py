@@ -1,5 +1,5 @@
 from selenium import webdriver
-from time import time
+from time import time, sleep
 
 chrome_driver_path = "/home/davibelo/chromedriver"
 driver = webdriver.Chrome(executable_path=chrome_driver_path)
@@ -46,34 +46,35 @@ def get_money():
     money_tag = driver.find_element_by_id("money")
     return int(money_tag.text.split()[0].replace(",", ""))
 
-
 continue_game = True
 
-while continue_game == True:
+while continue_game == True:    
     cookie.click()
 
     if time() > buy_item_timeout:
         upgrades = get_upgrades()
         money = get_money()
-        
+        print(money)
+
         affordable_upgrades = {}
         affordable_upgrades = {
             key: value
             for (key, value) in upgrades.items() if value < money
         }
-        print(affordable_upgrades)
 
-        #FIXME: not getting most expensive upgrade
-        most_expensive_upgrade_id = max(affordable_upgrades)
+        most_expensive_upgrade_id = list(affordable_upgrades.keys())[-1]
         print(most_expensive_upgrade_id)
 
-        # upgrade_to_buy_tag = driver.find_element_by_id(
-        #     most_expensive_upgrade_id)
-        # upgrade_to_buy_tag.click()
+        upgrade_to_buy_tag = driver.find_element_by_id(
+            most_expensive_upgrade_id)
+        upgrade_to_buy_tag.click()
 
         buy_item_timeout = time() + BUY_TIME
 
     if time() > game_end_time:
         continue_game = False
+        cookies_per_second = driver.find_element_by_id("cps").text
+        print(cookies_per_second)
+        
 
 driver.quit()
