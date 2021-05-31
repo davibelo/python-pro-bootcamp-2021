@@ -5,8 +5,8 @@ chrome_driver_path = "/home/davibelo/chromedriver"
 driver = webdriver.Chrome(executable_path=chrome_driver_path)
 driver.get("http://orteil.dashnet.org/experiments/cookie/")
 
-TOTAL_GAME_TIME = 60
-BUY_TIME = 5
+TOTAL_GAME_TIME = 60 * 5
+BUY_TIME = 7
 
 # get cookie to click on.
 cookie = driver.find_element_by_id("cookie")
@@ -56,25 +56,26 @@ while continue_game == True:
         money = get_money()
         print(money)
 
-        affordable_upgrades = {}
-        affordable_upgrades = {
-            key: value
-            for (key, value) in upgrades.items() if value < money
-        }
+        affordable_upgrades = [
+            key for (key, value) in upgrades.items() if value < money
+        ]
+        print(affordable_upgrades)
 
-        most_expensive_upgrade_id = list(affordable_upgrades.keys())[-1]
-        print(most_expensive_upgrade_id)
-
-        upgrade_to_buy_tag = driver.find_element_by_id(
-            most_expensive_upgrade_id)
-        upgrade_to_buy_tag.click()
-
-        buy_item_timeout = time() + BUY_TIME
+        try:
+            most_expensive_upgrade_id = affordable_upgrades[-1]
+            print(most_expensive_upgrade_id)
+        except IndexError:
+            print("not buying...")
+        else:
+            upgrade_to_buy_tag = driver.find_element_by_id(
+                most_expensive_upgrade_id)
+            upgrade_to_buy_tag.click()
+        finally:
+            buy_item_timeout = time() + BUY_TIME
 
     if time() > game_end_time:
         continue_game = False
         cookies_per_second = driver.find_element_by_id("cps").text
         print(cookies_per_second)
         
-
 driver.quit()
