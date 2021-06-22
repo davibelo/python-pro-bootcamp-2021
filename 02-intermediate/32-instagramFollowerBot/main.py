@@ -47,9 +47,10 @@ class InstaFollower:
 
         time.sleep(2)
         modal = self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div[2]')
-        # for i in range(10):
-        #     self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
-        #     time.sleep(2)
+        # scrolling all way down
+        for _ in range(10):
+            self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
+            time.sleep(2)
 
     # def follow(self):
     #     all_buttons = self.driver.find_elements_by_css_selector("li button")
