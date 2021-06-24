@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import ElementClickInterceptedException
 import os
 import time
-
+import math
 
 # getting actual directory and making a rel path
 REL_PATH = f"{os.path.dirname(__file__)}/"
@@ -17,7 +17,8 @@ PASSWORD = os.getenv("PASSWORD")
 
 CHROME_DRIVER_PATH = "/home/davibelo/chromedriver"
 SIMILAR_ACCOUNT = "laradiaspsi"
-
+# approximate followers to follow
+FOLLOWERS_TO_FOLLOW = 10
 
 class InstaFollower:
 
@@ -46,24 +47,25 @@ class InstaFollower:
         followers.click()
 
         time.sleep(2)
-        modal = self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div[2]')
-        # scrolling all way down
-        for _ in range(10):
+        modal = self.driver.find_element_by_xpath("/html/body/div[5]/div/div/div[2]")
+        # scrolling down the list
+        scrolling_commands = math.floor(FOLLOWERS_TO_FOLLOW/10)
+        for _ in range(scrolling_commands):
             self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
             time.sleep(2)
 
-    # def follow(self):
-    #     all_buttons = self.driver.find_elements_by_css_selector("li button")
-    #     for button in all_buttons:
-    #         try:
-    #             button.click()
-    #             time.sleep(1)
-    #         except ElementClickInterceptedException:
-    #             cancel_button = self.driver.find_element_by_xpath('/html/body/div[5]/div/div/div/div[3]/button[2]')
-    #             cancel_button.click()
+    def follow(self):
+        all_buttons = self.driver.find_elements_by_css_selector("li button")
+        for button in all_buttons:
+            try:
+                button.click()
+                time.sleep(1)
+            except ElementClickInterceptedException:
+                cancel_button = self.driver.find_element_by_xpath('/html/body/div[5]/div/div/div/div[3]/button[2]')
+                cancel_button.click()
 
 
 bot = InstaFollower(CHROME_DRIVER_PATH)
 bot.login()
 bot.find_followers()
-# bot.follow()
+bot.follow()
