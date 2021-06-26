@@ -6,12 +6,9 @@ https://replit.com/
 
 # Visual Studio Code
 
-## Setting your local environment (Visual Studio Code)
+## Setting your local environment (Visual Studio Code) - Debian Linux
+
 1. Install python:
-    - Windows:<br>
-        - Download installer on https://www.python.org/
-        - Install python to PATH
-    - Linux:
      
             $ sudo apt install python3
         
@@ -25,6 +22,11 @@ https://replit.com/
 
             $ sudo apt install python3-distutils
             $ sudo apt install python3-pip
+
+> Installing on Windows: 
+> - Download installer on https://www.python.org/
+> - Check "Install python to PATH" option <br>
+> - For futher steps, just have in mind that principals are similar, but commands are different.
 
 2. Install Visual Code
 3. Install Python and Jupyter extensions      
