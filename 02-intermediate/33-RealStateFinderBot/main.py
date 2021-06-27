@@ -10,7 +10,7 @@ INF_PRICE = 1650
 
 REL_PATH = os.path.dirname(__file__)
 CHROME_DRIVER_PATH = "/home/davibelo/chromedriver"
-URL = f"https://rj.olx.com.br/rio-de-janeiro-e-regiao/zona-oeste/jacarepagua/imoveis/aluguel/apartamentos?pe={SUP_PRICE}&ps={INF_PRICE}&ros={NUM_ROOMS}"
+URL = f"https://rj.olx.com.br/rio-de-janeiro-e-regiao/zona-oeste/jacarepagua/imoveis/aluguel/apartamentos?pe={SUP_PRICE}&ps={INF_PRICE}&ros={NUM_ROOMS}&sp=2"
 
 driver = webdriver.Chrome(executable_path=CHROME_DRIVER_PATH)
 
@@ -80,7 +80,7 @@ for _ in range(num_pages):
     get_ads_info()
     print_lengths()
     try:
-        next_page()    
+        next_page()
     except NoSuchElementException:
         continue
     else:
