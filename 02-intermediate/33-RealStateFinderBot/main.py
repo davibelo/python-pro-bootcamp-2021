@@ -4,9 +4,13 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import pandas as pd
 
+NUM_ROOMS = 3
+SUP_PRICE = 5000
+INF_PRICE = 1650
+
 REL_PATH = os.path.dirname(__file__)
 CHROME_DRIVER_PATH = "/home/davibelo/chromedriver"
-URL = "https://rj.olx.com.br/rio-de-janeiro-e-regiao/zona-oeste/jacarepagua/imoveis/aluguel/apartamentos?pe=5000&ps=1500&ros=3&sp=2"
+URL = f"https://rj.olx.com.br/rio-de-janeiro-e-regiao/zona-oeste/jacarepagua/imoveis/aluguel/apartamentos?pe={SUP_PRICE}&ps={INF_PRICE}&ros={NUM_ROOMS}"
 
 driver = webdriver.Chrome(executable_path=CHROME_DRIVER_PATH)
 
@@ -21,6 +25,7 @@ neighborhoods = []
 def get_num_pages():
     span_tags = driver.find_elements_by_css_selector(
         "div#column-main-content span")
+    print("getting number of pages...")
     for span_tag in span_tags:
         if not "resultados" in span_tag.text:
             pass
@@ -32,9 +37,6 @@ def get_num_pages():
 
 
 def get_ads_info():
-    """
-    get information on loaded page
-    """
     anchor_tags = driver.find_elements_by_css_selector("ul#ad-list li a")
     print("getting titles...")
     for anchor_tag in anchor_tags:
@@ -78,9 +80,11 @@ for _ in range(num_pages):
     get_ads_info()
     print_lengths()
     try:
-        next_page()
+        next_page()    
     except NoSuchElementException:
         continue
+    else:
+        print("loading next page...")
 
 print("filtering information...")
 for i in range(len(titles_raw)):
