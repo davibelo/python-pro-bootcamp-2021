@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import pandas as pd
 
-NUM_ROOMS = 3
+NUM_ROOMS = 4
 SUP_PRICE = 5000
 INF_PRICE = 1650
 

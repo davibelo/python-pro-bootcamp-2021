@@ -1,4 +1,5 @@
 # Flask is a framework for web app backends
+# https://flask.palletsprojects.com/en/1.1.x/quickstart/
 # Another option is django, but flask is enough for small projects
 
 # What is a Framework?
@@ -14,16 +15,19 @@ from flask import Flask
 
 app = Flask(__name__)
 
-
+# decorator function serves to add the functionality 
+# to call the bellow function only if that route is accessed 
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
 
-# to run the server, it is necessary to create a enviroment variable
-# and use a command to start flash server
+@app.route("/bye")
+def bye():
+    return "<p>Bye!!</p>"
 
-# example on bash:
-# $ export FLASK_APP=02-intermediate/19-FlaskWebServer.py
-# $ flask run
+# https://docs.python.org/3/library/__main__.html
+# run app if this script is being executed in top level scope (not imported)
+if __name__ == "__main__":
+    app.run()
+
 # after that, it will be running on: http://127.0.0.1:5000/ (or localhost:5000)
-
