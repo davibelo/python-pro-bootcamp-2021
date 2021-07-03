@@ -16,7 +16,7 @@ from flask import Flask
 app = Flask(__name__)
 
 # decorator function serves to add the functionality 
-# to call the bellow function only if that route is accessed 
+# it calls the bellow function only if that route is accessed 
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
