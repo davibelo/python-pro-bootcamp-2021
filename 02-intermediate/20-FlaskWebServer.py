@@ -15,19 +15,37 @@ from flask import Flask
 
 app = Flask(__name__)
 
-# decorator function serves to add the functionality 
-# it calls the bellow function only if that route is accessed 
+
+def make_bold(function):
+    def wrapper():
+        prefix = "<b>"
+        text = function()
+        suffix = "</b>"
+        return prefix+text+suffix
+    return wrapper()
+
+
+# decorator function serves to add the functionality
+# it calls the bellow function only if that route is accessed
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
 
+
+@app.route("/greet/<name>/<int:number>")
+def greet(name, number):
+    return f"<p>Hello {name}, your luck number is {number}</p>"
+
+
 @app.route("/bye")
+@make_bold
 def bye():
-    return "<p>Bye!!</p>"
+    return "Bye!!"
+
 
 # https://docs.python.org/3/library/__main__.html
 # run app if this script is being executed in top level scope (not imported)
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
 # after that, it will be running on: http://127.0.0.1:5000/ (or localhost:5000)
