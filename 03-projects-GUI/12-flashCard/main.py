@@ -10,9 +10,9 @@ current_card = {}
 # ----- READING WORD DATA ----- #
 
 try:
-    df = pd.read_csv("02-intermediate/14-flashCardApp/data/to_learn.csv")
+    df = pd.read_csv("03-projects-GUI/12-flashCard/data/to_learn.csv")
 except FileNotFoundError:
-    df = pd.read_csv("02-intermediate/14-flashCardApp/data/all_words.csv")
+    df = pd.read_csv("03-projects-GUI/12-flashCard/data/all_words.csv")
 finally:
     word_data = df.to_dict(orient="records")
 
@@ -42,9 +42,8 @@ def flip_card():
 def is_known():
     word_data.remove(current_card)
     df_to_learn = pd.DataFrame.from_records(word_data)
-    df_to_learn.to_csv(
-        "02-intermediate/14-flashCardApp/data/to_learn.csv",
-        index=False)
+    df_to_learn.to_csv("03-projects-GUI/12-flashCard/data/to_learn.csv",
+                       index=False)
     generate_card()
 
 
@@ -59,9 +58,9 @@ flip_timer = window.after(3000, func=flip_card)
 canvas = Canvas(width=800, height=526,
                 bg=BACKGROUND_COLOR, highlightthickness=0)
 card_front_img = PhotoImage(
-    file="02-intermediate/14-flashCardApp/images/card_front.png")
+    file="03-projects-GUI/12-flashCard/images/card_front.png")
 card_back_img = PhotoImage(
-    file="02-intermediate/14-flashCardApp/images/card_back.png")
+    file="03-projects-GUI/12-flashCard/images/card_back.png")
 card_background = canvas.create_image(400, 263, image=card_front_img)
 title_text = canvas.create_text(400, 150, text="",
                                 font=("Ariel", 40, "italic"))
@@ -71,13 +70,13 @@ canvas.grid(row=0, column=0, columnspan=2)
 
 # buttons
 wrong_button_img = PhotoImage(
-    file="02-intermediate/14-flashCardApp/images/wrong.png")
+    file="03-projects-GUI/12-flashCard/images/wrong.png")
 wrong_button = Button(image=wrong_button_img,
                       highlightthickness=0, command=generate_card)
 wrong_button.grid(row=1, column=0)
 
 right_button_img = PhotoImage(
-    file="02-intermediate/14-flashCardApp/images/right.png")
+    file="03-projects-GUI/12-flashCard/images/right.png")
 right_button = Button(image=right_button_img,
                       highlightthickness=0, command=is_known)
 right_button.grid(row=1, column=1)
