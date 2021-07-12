@@ -4,11 +4,11 @@ import pandas as pd
 # creating screen with US map
 screen = turtle.Screen()
 screen.title("U.S. States Game")
-image = "02-intermediate/09-US-StatesGame/blank_states_img.gif"
+image = "03-projects-GUI/07-US-StatesGame/blank_states_img.gif"
 screen.addshape(image)
 turtle.shape(image)
 
-df = pd.read_csv("02-intermediate/09-US-StatesGame/50_states.csv")
+df = pd.read_csv("03-projects-GUI/07-US-StatesGame/50_states.csv")
 all_states = df.state.to_list()
 guessed_states = []
 score = 0
