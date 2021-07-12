@@ -49,3 +49,12 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 # after that, it will be running on: http://127.0.0.1:5000/ (or localhost:5000)
+
+# Browser Cache when testing:
+# when testing, sometimes the browser caches static files
+# to overcome this, press SHIFT and click on RELOAD icon
+
+# for HTML5 templates:
+# You can use: https://html5up.net/
+# or: https://www.squarespace.com/
+
