@@ -50,6 +50,8 @@ if __name__ == "__main__":
 
 # after that, it will be running on: http://127.0.0.1:5000/ (or localhost:5000)
 
+# --- TIPS --- #
+
 # Browser Cache when testing:
 # when testing, sometimes the browser caches static files
 # to overcome this, press SHIFT and click on RELOAD icon
@@ -58,3 +60,8 @@ if __name__ == "__main__":
 # You can use: https://html5up.net/
 # or: https://www.squarespace.com/
 
+# Edit Template HTML on Browser:
+# type on browser console: > document.body.contentEditable=true
+# now you can change the website
+# to delete elements, go to elements on developer's tools and hit backspace
+# remember to save the .html file and move to your server folder
