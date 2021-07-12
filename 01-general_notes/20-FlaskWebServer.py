@@ -15,16 +15,6 @@ from flask import Flask
 
 app = Flask(__name__)
 
-
-def make_bold(function):
-    def wrapper():
-        prefix = "<b>"
-        text = function()
-        suffix = "</b>"
-        return prefix+text+suffix
-    return wrapper()
-
-
 # decorator function serves to add the functionality
 # it calls the bellow function only if that route is accessed
 @app.route("/")
@@ -38,7 +28,6 @@ def greet(name, number):
 
 
 @app.route("/bye")
-@make_bold
 def bye():
     return "Bye!!"
 
