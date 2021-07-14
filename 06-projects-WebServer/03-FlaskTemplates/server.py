@@ -32,8 +32,17 @@ def guess(name):
 @app.route("/blog")
 def blog():
     response = requests.get(url=BLOG_DATA_URL)
-    articles = response.json()    
+    articles = response.json()
     return render_template("blog.html", articles=articles)
+
+
+@app.route("/article/<int:id>")
+def article(id):
+    response = requests.get(url=BLOG_DATA_URL)
+    article = response.json()[id-1]    
+    print(article)
+    return render_template("article.html", article=article)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

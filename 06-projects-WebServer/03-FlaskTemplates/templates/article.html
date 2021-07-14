@@ -10,16 +10,11 @@
 
 <body>
     <h1>Blog Website</h1>
-    <!-- using python loops inside template -->
-    {% for article in articles: %}
     <br>
-    {% if article["id"] != 3: %}
     <h2>{{ article["title"] }}</h2>
     <h3>{{ article["subtitle"] }}</h3>
     <p>{{ article["body"] }}</p>
-    <br>
-    {% endif %}
-    {% endfor %}
+    <br>    
 </body>
 
 </html>

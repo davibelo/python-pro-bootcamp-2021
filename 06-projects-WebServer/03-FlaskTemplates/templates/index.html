@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,19 @@
     <title>html templates</title>
     <link rel="stylesheet" href="static/css/styles.css">
 </head>
-<body>    
-    <a href="https://flask.palletsprojects.com/en/2.0.x/tutorial/templates/">Flask/Jinja Templates<a>
-    <!-- Use double curly braces to run python code inside html -->
-    <h1>3*3={{3*3}}</h1>
-    <h1>Random Number: {{random_number}}</h1>
 
+<body>
+    <a href="https://flask.palletsprojects.com/en/2.0.x/tutorial/templates/">Flask/Jinja Templates<a>
+            <!-- Use double curly braces to run python code inside html -->
+            <h1>3*3={{3*3}}</h1>
+            <!-- getting a variable passed through rendering -->
+            <h1>Random Number: {{random_number}}</h1>
+            <br>
+            <!-- getting the url for blog template -->
+            <a href="{{ url_for("blog") }}">Go to blog Website</a>
+            <br>
+            <!-- getting a url for article and passing a parameter with it -->
+            <a href="{{ url_for("article", id=1) }}">Go to article 1</a>
 </body>
 
 <footer>
