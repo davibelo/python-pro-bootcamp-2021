@@ -5,7 +5,8 @@ import datetime
 
 AGE_GUESS_BASE_URL="https://api.agify.io/?name="
 GENDER_GUESS_BASE_URL = "https://api.genderize.io?name="
-BLOG_DATA_URL = "https://www.npoint.io/docs/ed99320662742443cc5b"
+BLOG_DATA_URL = "https://api.npoint.io/ed99320662742443cc5b"
+# https://www.npoint.io/docs/ed99320662742443cc5b
 
 app = Flask(__name__)
 
@@ -31,8 +32,8 @@ def guess(name):
 @app.route("/blog")
 def blog():
     response = requests.get(url=BLOG_DATA_URL)
-    print(response.json())
-    return render_template("blog.html")
+    articles = response.json()    
+    return render_template("blog.html", articles=articles)
 
 if __name__ == "__main__":
     app.run(debug=True)
