@@ -2,9 +2,9 @@ from flask import Flask, render_template
 from post import Post
 import requests
 
-posts = requests.get("https://api.npoint.io/ed99320662742443cc5b").json()
+posts_json = requests.get("https://api.npoint.io/ed99320662742443cc5b").json()
 post_objects = []
-for post in posts:
+for post in posts_json:
     post_obj = Post(post["id"], post["title"], post["subtitle"], post["body"])
     post_objects.append(post_obj)
 
