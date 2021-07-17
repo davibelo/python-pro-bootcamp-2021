@@ -52,7 +52,7 @@ def receive_contact_data():
             from_addr=MY_EMAIL,
             to_addrs=DEST_EMAIL,
             msg=
-            f"Subject:Contact from {name}\n\n{message}\n\n email: {email}\n phone: {phone}\n\n *this is from blog website contact form"
+            f"Subject:Contact from {name}\n\n{message}\n\n email: {email}\n phone: {phone}"
         )
     print(f"email sent to {DEST_EMAIL}!")
 
