@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Flask Inherited Template -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Failure</title>
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block title %}Sorry!!{% endblock%}
+
+{% block styling %}
+{{ super() }}
+body {
+background: red;
+}
+{% endblock %}
+
+
+{% block content %}
+<div>
     <h1>sorry...</h1>
     <img src="https://media.giphy.com/media/MarYoZ2BIJUimKydXa/giphy.gif" alt="sorry">
-</body>
-
-</html>
+</div>
+{% endblock %}
