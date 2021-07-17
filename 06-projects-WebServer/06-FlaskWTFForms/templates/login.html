@@ -10,15 +10,38 @@
 
 <body>
     <h1>Login:</h1>
-    <form name="login_form" action="{{url_for('send_login')}}" method="post">
+    <form name="login_form" action="{{url_for('login_route')}}" method="post" novalidate>
         <!-- the form obj passed by is used to create/control fields dynamically -->
+
+        <!-- getting a csrt_tolken from server, that you be passed back on submit -->
         {{ login_form.csrf_token }}
+
+        <!-- email field -->
         <p>
             {{ login_form.email.label }} <br>{{ login_form.email(size=30) }}
+            {% if login_form.email.errors %}
+            <ul class="errors">
+                {% for error in login_form.email.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </p>
+
+
+        <!-- password field -->
         <p>
             {{ login_form.password.label }} <br>{{ login_form.password(size=30) }}
+            {% if login_form.password.errors %}
+            <ul class="errors">
+                {% for error in login_form.password.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
         </p>
+        {% endif %}
+
+        <!-- submit button -->
         {{login_form.submit}}
     </form>
 </body>
