@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from post import Post
 import requests
 
+# making post objects using imported Post class
 posts_json = requests.get("https://api.npoint.io/ed99320662742443cc5b").json()
 post_objects = []
 for post in posts_json:
@@ -10,17 +11,19 @@ for post in posts_json:
 
 app = Flask(__name__)
 
+
 @app.route("/")
-def home():
+def home_route():
     return render_template("index.html", all_posts=post_objects)
 
+
 @app.route("/about")
-def about():
+def about_route():
     return render_template("about.html")
 
 
 @app.route("/contact")
-def contact():
+def contact_route():
     return render_template("contact.html")
 
 
