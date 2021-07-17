@@ -38,12 +38,12 @@ def contact_route():
 
 @app.route("/contact", methods=["POST"])
 def receive_contact_data():
-    data = request.form    
+    data = request.form
     name = data["name"]
     email = data["email"]
     phone = data["phone"]
     message = data["message"]
-        
+
     print("sending email...")
     with smtplib.SMTP(host="smtp.gmail.com", port=587) as connection:
         connection.starttls()
