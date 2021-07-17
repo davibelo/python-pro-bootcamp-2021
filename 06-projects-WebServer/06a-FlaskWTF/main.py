@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms.fields import PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, Length
+from flask_bootstrap import Bootstrap
 
 
 # creating a new class for login form
@@ -15,6 +16,8 @@ class LoginForm(FlaskForm):
 
 app = Flask(__name__)
 app.secret_key = "secretsecret"
+Bootstrap(app)
+
 TEST_EMAIL = "d@d.com"
 TEST_PASS = "12345678"
 
