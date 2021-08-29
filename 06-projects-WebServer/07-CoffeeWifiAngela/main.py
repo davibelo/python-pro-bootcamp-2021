@@ -8,11 +8,14 @@ import os
 
 REL_PATH = f"{os.path.dirname(__file__)}"
 
+# creating a Flask app
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+
+# using Bootstrap
 Bootstrap(app)
 
-
+# creating a form based on FlaskForm
 class CafeForm(FlaskForm):
     cafe = StringField(label="Cafe name", validators=[DataRequired()])
     location = StringField(label="Cafe Location on Google Maps (URL)",
@@ -52,6 +55,7 @@ def add_cafe():
                            f"{form.wifi_rating.data},"
                            f"{form.power_rating.data}")
         return redirect(url_for("cafes"))
+    # return add.html in get request
     return render_template("add.html", form=form)
 
 
