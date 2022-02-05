@@ -6,7 +6,7 @@ import pandas as pd
 
 NUM_ROOMS = 3
 SUP_PRICE = 5000
-INF_PRICE = 2000
+INF_PRICE = 1500
 
 REL_PATH = os.path.dirname(__file__)
 CHROME_DRIVER_PATH = "/home/davibelo/chromedriver"
