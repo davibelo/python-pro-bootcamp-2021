@@ -1,7 +1,7 @@
 import time
 
 # Python decorator function
-# can be used to give aditional functionalitty to a function
+# can be used to give additional functionality to a function
 # trigger something before or after, call that function more times...
 
 
