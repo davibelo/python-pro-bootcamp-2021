@@ -6,8 +6,9 @@ import time
 
 
 def delay_decorator(function):
+
     def wrapper_function():
-        time.sleep(2)
+        time.sleep(5)
         function()
         function()
         print("...")
@@ -20,7 +21,6 @@ def say_hello():
     print("Hello")
 
 
-@delay_decorator
 def say_greeting():
     print("How are you?")
 
@@ -40,6 +40,7 @@ import time
 
 
 def speed_calc_decorator(function):
+
     def wrapped_function():
         start_time = time.time()
         function()
@@ -51,7 +52,7 @@ def speed_calc_decorator(function):
 
 @speed_calc_decorator
 def fast_function():
-    for i in range(10000000):
+    for i in range(1000):
         i * i
 
 
@@ -68,12 +69,14 @@ slow_function()
 
 
 class User:
+
     def __init__(self, name):
         self.name = name
         self.is_logged_in = False
 
 
 def is_authenticated_decorator(function):
+
     def wrapper(*args, **kwargs):
         if args[0].is_logged_in == True:
             function(args[0])
@@ -93,6 +96,7 @@ create_blog_post(new_user)
 
 # ---- Advanced decorators exercise ---- #
 def logging_decorator(fn):
+
     def wrapper(*args, **kwargs):
         print(f"You called {fn.__name__}{args}")
         result = fn(args[0], args[1], args[2])
