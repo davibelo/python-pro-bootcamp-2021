@@ -19,10 +19,35 @@ class Book(db.Model):
     def __repr__(self):
         return '<Book %r>' % self.title
 
-
+# Creating database file
 db.create_all()
 
-# Creating first record
+# Creating new record
 book_1 = Book(id=1, title="Harry Potter", author="J. K. Rowling", review=9.3)
 db.session.add(book_1)
+db.session.commit()
+
+## CRUD examples ##
+
+# Read All Records
+all_books = session.query(Book).all()
+
+# Read A Particular Record By Query
+book = Book.query.filter_by(title="Harry Potter").first()
+
+# Update A Particular Record By Query
+book_to_update = Book.query.filter_by(title="Harry Potter").first()
+book_to_update.title = "Harry Potter and the Chamber of Secrets"
+db.session.commit()  
+
+# Update A Record By PRIMARY KEY
+book_id = 1
+book_to_update = Book.query.get(book_id)
+book_to_update.title = "Harry Potter and the Goblet of Fire"
+db.session.commit()  
+
+# Delete A Particular Record By PRIMARY KEY
+book_id = 1
+book_to_delete = Book.query.get(book_id)
+db.session.delete(book_to_delete)
 db.session.commit()
