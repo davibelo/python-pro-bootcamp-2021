@@ -4,7 +4,7 @@ REL_PATH = "06-projects-WebServer/08-VirtualLibrary_UsingSQL/library-sql"
 
 
 # Connecting to sql
-db = sqlite3.connect(f"{REL_PATH}/books-colletion.db")
+db = sqlite3.connect(f"{REL_PATH}/sqlite-books.db")
 cursor = db.cursor()
 
 # Creating database
