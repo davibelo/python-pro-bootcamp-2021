@@ -3,14 +3,14 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-##CREATE DATABASE
+## CONFIGURING DATABASE
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///books.db"
 #Optional: But it will silence the deprecation warning in the console.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-##CREATE TABLE
+## CREATING TABLE SCHEMA
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250), unique=True, nullable=False)
@@ -32,11 +32,23 @@ def add():
         new_book = Book(title=request.form["title"],
                         author=request.form["author"],
                         rating=request.form["rating"])
-
         db.session.add(new_book)
         db.session.commit()
         return redirect(url_for("home"))
     return render_template("add.html")
+
+
+@app.route("/edit_rating", methods=["GET", "POST"])
+def edit_rating():
+    if request.method == "POST":
+        book_id = request.form["id"]
+        book_to_update = Book.query.get(book_id)
+        book_to_update.rating = request.form["rating"]
+        db.session.commit()
+        return redirect(url_for("home"))
+    book_id = request.args.get("id")
+    book_selected = Book.query.get(book_id)
+    return render_template("edit_rating.html", book=book_selected)
 
 
 if __name__ == "__main__":
