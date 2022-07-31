@@ -46,8 +46,10 @@ def edit_rating():
         book_to_update.rating = request.form["rating"]
         db.session.commit()
         return redirect(url_for("home"))
+    # id parameter passed by get request by anchor in index.html template
     book_id = request.args.get("id")
     book_selected = Book.query.get(book_id)
+    # passing book_selected to edit_rating template
     return render_template("edit_rating.html", book=book_selected)
 
 
