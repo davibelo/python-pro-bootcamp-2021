@@ -6,7 +6,11 @@ from wtforms import StringField, DecimalField, SubmitField
 from wtforms.validators import DataRequired
 import requests
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    instance_path=
+    "C:\\Users\\davib\\Desktop\\python-pro-bootcamp-2021\\06-projects-WebServer\\09-TopMoviesWebsite"
+)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 Bootstrap(app)
 
@@ -28,12 +32,12 @@ class Movie(db.Model):
     review = db.Column(db.String(300), nullable=False)
     img_url = db.Column(db.String(300), nullable=False)
 
-
-db.create_all()
+with app.app_context():
+    db.create_all()
 
 
 # creating a edit form based on FlaskForm
-class MovieForm(FlaskForm):
+class RateMovieForm(FlaskForm):
     rating = DecimalField(label="Your Rating 0-10:", places=1, validators=[DataRequired()])
     review = StringField(label="Your review:", validators=[DataRequired()])
     submit = SubmitField(label="Submit Review")
@@ -50,13 +54,18 @@ def add():
 
 @app.route("/edit", methods=["GET", "POST"])
 def edit():
-    form = MovieForm()
-    if form.validate_on_submit(): # this method works only with POST request
-        print(form.rating.data)
-        print(form.review.data)
+    form = RateMovieForm()
     movie_id = request.args.get("id")
-    movie_to_edit = Movie.query.get(movie_id)
-    return render_template("edit.html", movie=movie_to_edit, form=form)
+    movie_to_rate = Movie.query.get(movie_id)
+    print(movie_to_rate)
+    if form.validate_on_submit(): # this method works only with POST request
+        movie_to_rate.rating = float(form.rating.data)
+        print(movie_to_rate.rating)
+        movie_to_rate.review = form.review.data
+        print(movie_to_rate.review)
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template("edit.html", movie=movie_to_rate, form=form)
 
 
 @app.route("/delete")

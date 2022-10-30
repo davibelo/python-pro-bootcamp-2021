@@ -6,12 +6,17 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    instance_path=
+    "C:\\Users\\davib\\Desktop\\python-pro-bootcamp-2021\\06-projects-WebServer\\09-TopMoviesWebsite"
+)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 Bootstrap(app)
 
 ## CONFIGURING DATABASE
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///movies.db"
+app.config[
+    'SQLALCHEMY_DATABASE_URI'] = "sqlite:///movies.db"
 #Optional: But it will silence the deprecation warning in the console.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -29,7 +34,8 @@ class Movie(db.Model):
     img_url = db.Column(db.String(300), nullable=False)
 
 
-db.create_all()
+with app.app_context():
+    db.create_all()
 
 ## Adding first record on database
 new_movie = Movie(
@@ -42,5 +48,6 @@ new_movie = Movie(
     review="My favourite character was the caller.",
     img_url="https://image.tmdb.org/t/p/w500/tjrX2oWRCM3Tvarz38zlZM7Uc10.jpg")
 
-db.session.add(new_movie)
-db.session.commit()
+with app.app_context():
+    db.session.add(new_movie)
+    db.session.commit()
