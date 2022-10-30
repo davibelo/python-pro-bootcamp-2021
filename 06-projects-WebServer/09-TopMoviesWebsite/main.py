@@ -125,7 +125,7 @@ def delete():
     movie_to_del = Movie.query.get(movie_id)
     db.session.delete(movie_to_del)
     db.session.commit()
-    return render_template("index.html")
+    return redirect(url_for("home"))
 
 
 if __name__ == '__main__':
