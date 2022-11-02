@@ -126,6 +126,8 @@ def delete_cafe(cafe_id):
         return jsonify(
             error={"Forbidden": "Sorry, that's not allowed. Make sure you have the correct api_key."}), 403
 
+# Postman tests can be used to generate documentation:
+# https://documenter.getpostman.com/view/2568017/TVRhd9qR
 
 if __name__ == '__main__':
     app.run(debug=True)
