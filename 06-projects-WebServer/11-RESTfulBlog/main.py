@@ -46,19 +46,21 @@ class CreatePostForm(FlaskForm):
     submit = SubmitField("Submit Post")
 
 
-@app.route('/')
+@app.route("/")
 def get_all_posts():
     posts = db.session.query(BlogPost).all()
     return render_template("index.html", all_posts=posts)
 
 
-@app.route("/post/<int:index>")
-def show_post(index):
-    requested_post = None
-    for blog_post in posts:
-        if blog_post["id"] == index:
-            requested_post = blog_post
+@app.route("/post/<int:post_id>")
+def show_post(post_id):
+    requested_post = BlogPost.query.get(post_id)
     return render_template("post.html", post=requested_post)
+
+
+@app.route("/edit/<int:post_id>")
+def edit_post(post_id):
+    pass
 
 
 @app.route("/about")
