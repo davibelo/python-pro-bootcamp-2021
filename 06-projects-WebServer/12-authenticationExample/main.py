@@ -14,6 +14,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 
 ##CREATE TABLE IN DB
 class User(UserMixin, db.Model):
@@ -45,19 +53,32 @@ def register():
                         password=hash_and_salted_password)
         db.session.add(new_user)
         db.session.commit()
+        #Log in and authenticate user after adding details to database.
+        login_user(new_user)
+
         return redirect(url_for("secrets"))
     return render_template("register.html")
 
 
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        email = request.form.get('email')
+        password = request.form.get('password')
+        #Find user by email entered.
+        user = User.query.filter_by(email=email).first()
+        #Check stored password hash against entered password hashed.
+        if check_password_hash(user.password, password):
+            login_user(user)
+            return redirect(url_for('secrets'))
     return render_template("login.html")
 
 
 @app.route('/secrets')
+@login_required
 def secrets():
-    name = db.session.query(User).all()[-1].name.title()
-    return render_template("secrets.html", name=name)
+    print(current_user.name)
+    return render_template("secrets.html", name=current_user.name)
 
 
 @app.route('/logout')
