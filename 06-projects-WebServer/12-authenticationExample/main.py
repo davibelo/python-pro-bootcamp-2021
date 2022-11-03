@@ -42,7 +42,6 @@ def home():
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
-
     if request.method == "POST":
         hash_and_salted_password = generate_password_hash(
             request.form.get('password'), method='pbkdf2:sha256', salt_length=8)
@@ -80,10 +79,12 @@ def secrets():
 
 @app.route('/logout')
 def logout():
-    pass
+    logout_user()
+    return redirect(url_for('home'))
 
 
 @app.route('/download')
+@login_required
 def download():
     return send_from_directory('static',
                                path="files/cheat_sheet.pdf",
