@@ -1,0 +1,159 @@
+Authentication and security
+
+Why authenticate?
+    1. Associate data with an user
+    2. Restrict access of data
+
+How secure is your service?
+    You can have at least 6 level of security
+
+Level 1 - Username and Password Only
+Level 2 - Encryption
+Level 3 - Hashing with md5
+Level 4 - Hashing and Salting with bcrypt
+Level 5 - Cookies and Sessions
+Level 6 - Google OAuth 2.0 Authentication
+
+
+Encryption
+    Site to test encryption
+    https://cryptii.com/
+
+For all encryption you have:
+    the message
+    the method
+    the key
+
+Mongoose-encryption
+    It is a node.js module that can be used as mongoose plugin
+    for encryption
+
+    This package automatically:
+        encrypts when app saves the document
+        decrypts when app find the document
+
+dotenv
+    It is a node.js module that allows to read environment variables
+    This is useful to store encryption keys
+    
+    OBS: 
+    On Heroku platform you can set this env variables to be able
+    to use in your project without need to have env information 
+    on repository
+
+Hashing 
+    Hashing works appling a function to the content that
+    you want to secure.
+             hash function
+    password ------------> hash
+
+    It is impossible to calculate the password even having the 
+    result hash and hash method
+
+    The problem of the hash is because people sometimes 
+    uses "easy" passwords. So the hacker can have a table
+    of "easy" passwords hashes and compare with it.
+
+Hacking 101
+    List of most common passwords by year
+    https://en.wikipedia.org/wiki/List_of_the_most_common_passwords
+    
+    List of most common passwords hashes
+    https://www.passwordrandom.com/most-popular-passwords
+
+    You can simply google the hash if it is from a common
+    password results will appear
+
+    Check the time necessary for your password to be hacked
+    http://password-checker.online-domain-tools.com/
+
+Salting
+    Adding random characters to the password before hash it.    
+
+                     salt        hash function         
+    password + random characters ------------> hash +  random characters 
+
+    More rounds of salting can be used.
+
+            2nd round salting  hash function 
+    hash +  random characters  ------------> final hash
+
+Better hashing function
+    bcrypt is package that have a better hashing function than MD5
+    
+    Attention to the node version compatibility
+        https://www.npmjs.com/package/bcrypt
+    
+    Use node.js LTS version
+    If you version is not compatible, use nvm to change it
+    https://github.com/nvm-sh/nvm/blob/master/README.md
+
+    Even with this, If you have warning when installing 
+    bcrypt, try to reinstall the slightly older version
+    > npm i bcrypt@5.0.0
+
+Cookies
+    Cookies are information saved in the client browser
+    Its contain session information.
+    
+    This allows the website to know what have you done 
+    previously there, for example: 
+        added a item on a cart on amazon.com
+    
+    Those information can be used in the website itself
+    or other websites, for example:
+        facebook website will know which item was in 
+        your amazon cart
+
+passport.js
+    It is a node package used to manage Sessions
+
+Making an app with session control
+    Packages:
+        "express-session"
+        "passport"
+        "passport-local"
+        "passport-local-mongoose"
+    Documentation
+        https://www.npmjs.com/package/express-session
+        http://www.passportjs.org/
+        http://www.passportjs.org/packages/passport-local/
+        https://www.npmjs.com/package/passport-local-mongoose
+
+
+Third Party Authentication
+    Use facebook, google, twitter to authenticate
+    
+    Advantages: 
+        Use some third party information 
+        Delegate authentication responsibility 
+
+OAuth
+    Service that permits 3rd party authentication
+    Characteristics:    
+        1. Granular access levels
+        2. Read/Read + Write access options
+        3. Revoke access
+
+    Steps
+        1. Setup your app
+        2. Redirect to authenticate
+        3. User logs in on 3rd party
+        4. User grants permissions
+        5. Receive authorisation code from 3rd Party
+        6. (optional) Exchange AuthCode for Access Token
+    
+        Access Token permits your app access other 
+        information on 3rd party
+    
+    OAuth can be found as strategies on passport.js website
+        Those strategies are node.js packages
+        Example:
+            http://www.passportjs.org/packages/passport-google-oauth20/
+    
+
+
+
+
+
+    
