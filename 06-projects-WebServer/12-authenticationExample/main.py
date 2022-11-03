@@ -53,7 +53,6 @@ def register():
         db.session.commit()
         #Log in and authenticate user after adding details to database.
         login_user(new_user)
-
         return redirect(url_for("secrets"))
     return render_template("register.html")
 
