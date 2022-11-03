@@ -6,7 +6,8 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 app = Flask(
     __name__,
     instance_path=
-    "C:\\Users\\davib\\Desktop\\python-pro-bootcamp-2021\\06-projects-WebServer\\12-authenticationExample")
+    "C:\\Users\\davib\\Desktop\\python-pro-bootcamp-2021\\06-projects-WebServer\\12-authenticationExample"
+)
 
 app.config['SECRET_KEY'] = 'any-secret-key-you-choose'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -33,12 +34,15 @@ def home():
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
+
     if request.method == "POST":
-        new_user = User(
-            name=request.form["name"],
-            email=request.form["email"],
-            password=request.form["password"],
-        )
+
+        hash_and_salted_password = generate_password_hash(
+            request.form.get('password'), method='pbkdf2:sha256', salt_length=8)
+
+        new_user = User(name=request.form["name"],
+                        email=request.form["email"],
+                        password=hash_and_salted_password)
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for("secrets"))
@@ -63,7 +67,9 @@ def logout():
 
 @app.route('/download')
 def download():
-    pass
+    return send_from_directory('static',
+                               path="files/cheat_sheet.pdf",
+                               as_attachment=True)
 
 
 if __name__ == "__main__":
