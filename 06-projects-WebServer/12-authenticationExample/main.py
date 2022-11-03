@@ -44,10 +44,8 @@ def home():
 def register():
 
     if request.method == "POST":
-
         hash_and_salted_password = generate_password_hash(
             request.form.get('password'), method='pbkdf2:sha256', salt_length=8)
-
         new_user = User(name=request.form["name"],
                         email=request.form["email"],
                         password=hash_and_salted_password)
