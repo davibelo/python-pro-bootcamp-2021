@@ -12,15 +12,21 @@ from datetime import date
 
 app = Flask(
     __name__,
-    instance_path=
-    "C:\\Users\\davib\\Desktop\\python-pro-bootcamp-2021\\06-projects-WebServer\\13-BlogWithUser"
+    instance_path="C:\\Users\\davib\\Desktop\\python-pro-bootcamp-2021\\06-projects-WebServer\\13-BlogWithUser"
 )
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 Bootstrap(app)
-
 login_manager = LoginManager()
 login_manager.init_app(app)
+gravatar = Gravatar(app, 
+                    size=100, 
+                    rating='g', 
+                    default='retro', 
+                    force_default=False, 
+                    force_lower=False, 
+                    use_ssl=False, 
+                    base_url=None)
 
 @login_manager.user_loader
 def load_user(user_id):
