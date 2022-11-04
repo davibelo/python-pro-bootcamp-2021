@@ -30,8 +30,8 @@
             {{post.subtitle}}
           </h3>
         </a>
-        <p class="post-meta">Posted by
-          <a href="#">{{post.author}}</a>
+        <p class="post-meta">Posted by          
+          {{post.author.name}}
           on {{post.date}}
           <!-- If user id is 1 then they can see the delete button -->
           {% if current_user.id == 1: %}

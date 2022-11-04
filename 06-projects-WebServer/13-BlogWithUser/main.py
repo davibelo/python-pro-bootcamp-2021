@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from flask_gravatar import Gravatar
 from sqlalchemy.orm import relationship
-from forms import CreatePostForm, RegisterForm, LoginForm
+from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 from datetime import date
@@ -45,24 +45,54 @@ db = SQLAlchemy(app)
 
 
 ##CONFIGURE TABLES
-#BlogPost Table
-class BlogPost(db.Model):
-    __tablename__ = "blog_posts"
-    id = db.Column(db.Integer, primary_key=True)
-    author = db.Column(db.String(250), nullable=False)
-    title = db.Column(db.String(250), unique=True, nullable=False)
-    subtitle = db.Column(db.String(250), nullable=False)
-    date = db.Column(db.String(250), nullable=False)
-    body = db.Column(db.Text, nullable=False)
-    img_url = db.Column(db.String(250), nullable=False)
 
 #User Table
 class User(UserMixin, db.Model):
     __tablename__ = "users"
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(100), unique=True)
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100))
     name = db.Column(db.String(100))
+    #This will act like a List of BlogPost objects attached to each User. 
+    #The "author" refers to the author property in the BlogPost class.
+    #Parent relationship 0
+    posts = relationship("BlogPost", back_populates="author")
+    ######################
+    #Parent relationship 1
+    comments = relationship("Comment", back_populates="comment_author")
+    ######################
+
+#BlogPost Table
+class BlogPost(db.Model):
+    __tablename__ = "blog_posts"
+    id = db.Column(db.Integer, primary_key=True)
+    #Child relationship 0  
+    author = relationship("User", back_populates="posts")
+    author_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)  
+    #####################
+    title = db.Column(db.String(250), unique=True, nullable=False)
+    subtitle = db.Column(db.String(250), nullable=False)
+    date = db.Column(db.String(250), nullable=False)
+    body = db.Column(db.Text, nullable=False)
+    img_url = db.Column(db.String(250), nullable=False)   
+    #This will act like a List of Comments objects attached to each Post. 
+    #Parent relationship 2
+    comments = relationship("Comment", back_populates="parent_post")
+    ######################
+#Comment Table    
+class Comment(db.Model):
+    __tablename__ = "comments"
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.Text, nullable=False)
+    #Child relationship 1
+    comment_author = relationship("User", back_populates="comments")
+    author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    #####################
+    #Child Relationship 2
+    parent_post = relationship("BlogPost", back_populates="comments")
+    post_id = db.Column(db.Integer, db.ForeignKey("blog_posts.id"))
+    #####################
+    text = db.Column(db.Text, nullable=False)
 
 with app.app_context():
     db.create_all()
@@ -129,8 +159,9 @@ def logout():
 
 @app.route("/post/<int:post_id>")
 def show_post(post_id):
+    form = CommentForm()
     requested_post = BlogPost.query.get(post_id)
-    return render_template("post.html", post=requested_post, current_user=current_user)
+    return render_template("post.html", form=form, post=requested_post, current_user=current_user)
 
 
 @app.route("/about")
@@ -143,7 +174,7 @@ def contact():
     return render_template("contact.html", current_user=current_user)
 
 
-@app.route("/new-post")
+@app.route("/new-post", methods=["GET", "POST"])
 @admin_only
 def add_new_post():
     form = CreatePostForm()
@@ -153,7 +184,7 @@ def add_new_post():
             subtitle=form.subtitle.data,
             body=form.body.data,
             img_url=form.img_url.data,
-            author=current_user,
+            author_id=current_user.id,
             date=date.today().strftime("%B %d, %Y")
         )
         db.session.add(new_post)
@@ -170,14 +201,12 @@ def edit_post(post_id):
         title=post.title,
         subtitle=post.subtitle,
         img_url=post.img_url,
-        author=post.author,
         body=post.body
     )
     if edit_form.validate_on_submit():
         post.title = edit_form.title.data
         post.subtitle = edit_form.subtitle.data
-        post.img_url = edit_form.img_url.data
-        post.author = edit_form.author.data
+        post.img_url = edit_form.img_url.data        
         post.body = edit_form.body.data
         db.session.commit()
         return redirect(url_for("show_post", post_id=post.id))
