@@ -6,6 +6,10 @@
         "SPOTIPY",
         "sqlite",
         "TMDB",
-        "wtforms"
+        "wtforms",
+        "xlabel",
+        "xticks",
+        "ylabel",
+        "yticks"
     ]
 }
