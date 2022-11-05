@@ -4,11 +4,5 @@
 # pre-compiled code
 **/__pycache__/**
 
-# node modules
-**/node_modules/**
-
-# temp Code Runner files
-tempCodeRunnerFile.py
-
 # environment files
 .env
