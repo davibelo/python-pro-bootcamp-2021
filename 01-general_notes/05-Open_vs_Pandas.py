@@ -4,7 +4,7 @@ import pandas as pd
 import csv
 
 # with csv
-with open("02-intermediate/05b-weather_data.csv") as data_file:
+with open("01-general_notes/05a-weather_data.csv") as data_file:
     data0 = csv.reader(data_file)
     temperatures = []
     for row in data0:
@@ -14,7 +14,7 @@ with open("02-intermediate/05b-weather_data.csv") as data_file:
 print("a)", temperatures)
 
 # with pandas
-data = pd.read_csv("02-intermediate/05b-weather_data.csv")
+data = pd.read_csv("01-general_notes/05a-weather_data.csv")
 print("b)", data)
 print("c)", type(data))
 print("d)", data["temp"])
